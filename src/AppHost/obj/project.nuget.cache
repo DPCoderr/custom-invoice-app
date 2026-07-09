@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "twRHDYX6i70=",
+  "dgSpecHash": "TtTx7W75Ulw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-auth\\src\\AppHost\\AppHost.csproj",
+  "projectFilePath": "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\AppHost\\AppHost.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dppc2\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\13.4.6\\aspire.dashboard.sdk.win-x64.13.4.6.nupkg.sha512",
     "C:\\Users\\dppc2\\.nuget\\packages\\aspire.hosting\\13.4.6\\aspire.hosting.13.4.6.nupkg.sha512",

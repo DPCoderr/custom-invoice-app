@@ -15,7 +15,7 @@ public class MyApp_Api : global::Aspire.Hosting.IProjectMetadata
     /// <summary>
     /// The path to the MyApp_Api project.
     /// </summary>
-    public string ProjectPath => """C:\Users\dppc2\Documents\Projects\nextjs-.net-template\nextjs-.net-template-with-auth\src\backend\MyApp.Api\MyApp.Api.csproj""";
+    public string ProjectPath => """C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\backend\MyApp.Api\MyApp.Api.csproj""";
 
     /// <summary>
     /// Gets a value indicating whether building the project before running it should be suppressed.

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-auth\\src\\ServiceDefaults\\ServiceDefaults.csproj": {}
+    "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\ServiceDefaults\\ServiceDefaults.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-auth\\src\\ServiceDefaults\\ServiceDefaults.csproj": {
+    "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\ServiceDefaults\\ServiceDefaults.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-auth\\src\\ServiceDefaults\\ServiceDefaults.csproj",
+        "projectUniqueName": "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\ServiceDefaults\\ServiceDefaults.csproj",
         "projectName": "ServiceDefaults",
-        "projectPath": "C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-auth\\src\\ServiceDefaults\\ServiceDefaults.csproj",
+        "projectPath": "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\ServiceDefaults\\ServiceDefaults.csproj",
         "packagesPath": "C:\\Users\\dppc2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-auth\\src\\ServiceDefaults\\obj\\",
+        "outputPath": "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\ServiceDefaults\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dppc2\\AppData\\Roaming\\NuGet\\NuGet.Config"

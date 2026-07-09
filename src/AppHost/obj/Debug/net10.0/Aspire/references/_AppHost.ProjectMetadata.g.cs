@@ -17,5 +17,5 @@ public class AppHost
     /// <summary>
     /// The path to the Aspire Host project.
     /// </summary>
-    public static string ProjectPath => """C:\Users\dppc2\Documents\Projects\nextjs-.net-template\nextjs-.net-template-with-auth\src\AppHost""";
+    public static string ProjectPath => """C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\AppHost""";
 }

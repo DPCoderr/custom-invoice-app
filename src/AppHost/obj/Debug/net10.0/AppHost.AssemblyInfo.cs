@@ -15,17 +15,15 @@ using System.Reflection;
     "dcp.exe"))]
 [assembly: System.Reflection.AssemblyMetadata("dcpextensionpaths", ("C:\\Users\\dppc2\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\13.4.6\\tools\\" +
     "ext\\"))]
-[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", ("C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-" +
-    "auth\\src\\AppHost"))]
+[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\AppHost")]
 [assembly: System.Reflection.AssemblyMetadata("apphostprojectname", "AppHost.csproj")]
 [assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", ("C:\\Users\\dppc2\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\13.4.6\\tools\\Aspire.D" +
     "ashboard.exe"))]
-[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", ("C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-" +
-    "auth\\src\\AppHost\\obj\\"))]
+[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\AppHost\\obj\\")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2259c90b9c5e6757db2ba9aa3a3332cf96773bd5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50f87b0909bf8cd18b606edf05ab9ab8aeecb2ff")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

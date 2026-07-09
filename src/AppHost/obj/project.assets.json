@@ -3997,11 +3997,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-auth\\src\\AppHost\\AppHost.csproj",
+      "projectUniqueName": "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\AppHost\\AppHost.csproj",
       "projectName": "AppHost",
-      "projectPath": "C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-auth\\src\\AppHost\\AppHost.csproj",
+      "projectPath": "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\AppHost\\AppHost.csproj",
       "packagesPath": "C:\\Users\\dppc2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dppc2\\Documents\\Projects\\nextjs-.net-template\\nextjs-.net-template-with-auth\\src\\AppHost\\obj\\",
+      "outputPath": "C:\\Users\\dppc2\\Documents\\Projects\\custom-invoice-app\\src\\AppHost\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dppc2\\AppData\\Roaming\\NuGet\\NuGet.Config"
