@@ -1,5 +1,4 @@
 import {
-  Link,
   Outlet,
   createRootRouteWithContext,
 } from "@tanstack/react-router";
@@ -8,7 +7,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 
 import "../styles.css";
 import type { QueryClient } from "@tanstack/react-query";
-import { Button } from "#/components/ui/button";
+import { Navbar } from "#/components/hero/navbar";
 
 interface MyRouterContext {
   queryClient: QueryClient;
@@ -21,28 +20,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 function RootComponent() {
   return (
     <>
-      <nav>
-        <Button
-          nativeButton={false}
-          variant={"link"}
-          render={<Link to="/">Home</Link>}
-        ></Button>
-        <Button
-          nativeButton={false}
-          variant={"link"}
-          render={<Link to="/login">Login</Link>}
-        ></Button>
-        <Button
-          nativeButton={false}
-          variant={"link"}
-          render={<Link to="/register">Register</Link>}
-        ></Button>
-        <Button
-          nativeButton={false}
-          variant={"link"}
-          render={<Link to="/dashboard">Dashboard</Link>}
-        ></Button>
-      </nav>
+      <Navbar />
       <Outlet />
       <TanStackDevtools
         config={{

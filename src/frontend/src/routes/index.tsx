@@ -22,7 +22,7 @@ function Home() {
         Edit <code>src/routes/index.tsx</code> to get started.
       </p>
 
-      {user && <p className="mt-4 text-lg">{user.firstName}</p>}
+      {user && <p className="mt-4 text-lg">{user.firstName}  {user.email}</p>}
     </div>
   );
 }
