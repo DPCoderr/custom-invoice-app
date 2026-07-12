@@ -22,11 +22,14 @@ import { login } from "#/lib/api/auth";
 import { useNavigate } from "@tanstack/react-router";
 
 export const loginSchema = z.object({
-  email: z.email(),
+  email: z.email().trim(),
   password: z
     .string()
-    .min(6, "password must be at least 6 characters.")
-    .max(100, "password must be at most 100 characters."),
+    .min(6)
+    .regex(/[a-z]/)
+    .regex(/[A-Z]/)
+    .regex(/\d/)
+    .regex(/[^a-zA-Z0-9]/),
 });
 
 export type LoginSchemaValues = z.infer<typeof loginSchema>;

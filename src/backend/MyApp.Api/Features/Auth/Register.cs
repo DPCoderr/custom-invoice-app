@@ -16,7 +16,6 @@ public static class Register
 
     public static async Task<Results<Ok, BadRequest<IEnumerable<string>>>> Handle(
         RegisterRequestDto request,
-        AppDbContext db,
         UserManager<AppUser> userManager,
         SignInManager<AppUser> signInManager)
     {

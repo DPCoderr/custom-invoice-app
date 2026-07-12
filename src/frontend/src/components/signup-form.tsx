@@ -1,24 +1,74 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   Field,
   FieldDescription,
   FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/field";
+import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
+import { FormInput } from "./form-input";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { register } from "#/lib/api/auth";
+
+export const registerSchema = z
+  .object({
+    firstName: z.string().trim().min(1),
+    lastName: z.string().trim().min(1),
+    email: z.email().trim(),
+    password: z
+      .string()
+      .min(6)
+      .regex(/[a-z]/)
+      .regex(/[A-Z]/)
+      .regex(/\d/)
+      .regex(/[^a-zA-Z0-9]/),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords do not match",
+  });
+
+export type RegisterSchemaValues = z.infer<typeof registerSchema>;
 
 export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const navigate = useNavigate();
+
+  const form = useForm<RegisterSchemaValues>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  const mutation = useMutation({
+    mutationFn: register,
+    onSuccess: () => navigate({ to: "/dashboard" }),
+    onError: (error) => form.setError("root", { message: error.message }),
+  });
+
+  function onSubmit(data: RegisterSchemaValues) {
+    form.clearErrors("root");
+    mutation.mutate(data);
+  }
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -29,36 +79,47 @@ export function SignupForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form id="signup-form" onSubmit={form.handleSubmit(onSubmit)}>
             <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="name">Full Name</FieldLabel>
-                <Input id="name" type="text" placeholder="John Doe" required />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </Field>
+              <FormInput
+                name="firstName"
+                control={form.control}
+                label="Firstname"
+                placeholder="John"
+                type="text"
+              />
+              <FormInput
+                name="lastName"
+                control={form.control}
+                label="Lastname"
+                placeholder="Doe"
+                type="text"
+              />
+
+              <FormInput
+                name="email"
+                control={form.control}
+                label="Email"
+                placeholder="j.doe@gmail.com"
+                type="email"
+              />
               <Field>
                 <Field className="grid grid-cols-2 gap-4">
-                  <Field>
-                    <FieldLabel htmlFor="password">Password</FieldLabel>
-                    <Input id="password" type="password" required />
-                  </Field>
-                  <Field>
-                    <FieldLabel htmlFor="confirm-password">
-                      Confirm Password
-                    </FieldLabel>
-                    <Input id="confirm-password" type="password" required />
-                  </Field>
+                  <FormInput
+                    name="password"
+                    control={form.control}
+                    label="Password"
+                    type="password"
+                  />
+                  <FormInput
+                    name="confirmPassword"
+                    control={form.control}
+                    label="Confirm Password"
+                    type="password"
+                  />
                 </Field>
                 <FieldDescription>
-                  Must be at least 8 characters long.
+                  Must be at least 6 characters long.
                 </FieldDescription>
               </Field>
               <Field>
@@ -76,5 +137,5 @@ export function SignupForm({
         and <a href="#">Privacy Policy</a>.
       </FieldDescription>
     </div>
-  )
+  );
 }

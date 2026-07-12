@@ -10,8 +10,8 @@ public static class Google
 {
     public static IResult RedirectToGoogleLogin(
         string? returnUrl,
-        LinkGenerator links,
-        HttpContext ctx)
+        LinkGenerator links
+    )
     {
         var redirectUri = links.GetPathByName("google-callback", new { returnUrl });
         var props = new AuthenticationProperties { RedirectUri = redirectUri };

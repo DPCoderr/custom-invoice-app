@@ -11,3 +11,16 @@ C:\Users\dppc2\Documents\Projects\nextjs-.net-template\nextjs-.net-template-with
 C:\Users\dppc2\Documents\Projects\nextjs-.net-template\nextjs-.net-template-with-auth\src\ServiceDefaults\obj\Debug\net10.0\refint\ServiceDefaults.dll
 C:\Users\dppc2\Documents\Projects\nextjs-.net-template\nextjs-.net-template-with-auth\src\ServiceDefaults\obj\Debug\net10.0\ServiceDefaults.pdb
 C:\Users\dppc2\Documents\Projects\nextjs-.net-template\nextjs-.net-template-with-auth\src\ServiceDefaults\obj\Debug\net10.0\ref\ServiceDefaults.dll
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\bin\Debug\net10.0\ServiceDefaults.deps.json
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\bin\Debug\net10.0\ServiceDefaults.dll
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\bin\Debug\net10.0\ServiceDefaults.pdb
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\ServiceDefaults.csproj.AssemblyReference.cache
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\ServiceDefaults.AssemblyInfoInputs.cache
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\ServiceDefaults.AssemblyInfo.cs
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\ServiceDefaults.csproj.CoreCompileInputs.cache
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\ServiceDefaults.sourcelink.json
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\ServiceDefaults.dll
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\refint\ServiceDefaults.dll
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\ServiceDefaults.pdb
+C:\Users\dppc2\Documents\Projects\custom-invoice-app\src\ServiceDefaults\obj\Debug\net10.0\ref\ServiceDefaults.dll

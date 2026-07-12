@@ -1,4 +1,5 @@
 import type { LoginSchemaValues } from "#/components/login-form";
+import type { RegisterSchemaValues } from "#/components/signup-form";
 
 export type ResponseDto<T = null> = {
   success: boolean,
@@ -11,6 +12,28 @@ export async function login(data: LoginSchemaValues): Promise<void> {
 
   try {
     res = await fetch("http://localhost:5050/api/auth/login", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  } catch (error) {
+    throw new Error("Failed to connect with the backend. Try it later again.");
+  }
+
+  if (!res.ok) {
+    const body = await res.json().catch(() => null);
+    throw new Error(body?.message ?? "Something went wrong");
+  }
+}
+
+export async function register(data: RegisterSchemaValues): Promise<void> {
+  let res: Response;
+
+  try {
+    res = await fetch("http://localhost:5050/api/auth/register", {
       credentials: "include",
       method: "POST",
       headers: {

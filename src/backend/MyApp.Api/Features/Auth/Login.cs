@@ -10,7 +10,6 @@ public class Login
     
     public static async Task<Results<Ok, BadRequest<string>>> Handle(
         LoginRequest request,
-        AppDbContext db,
         SignInManager<AppUser> signInManager
     )
     {
@@ -25,7 +24,7 @@ public class Login
             request.Email, 
             request.Password, 
             request.RememberMe, 
-            false
+            lockoutOnFailure: false
         );
 
         if (!result.Succeeded)
