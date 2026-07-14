@@ -1,4 +1,6 @@
+import { useLogout } from "#/features/auth/mutations";
 import { logout } from "#/lib/api/auth";
+import { useFormMutation } from "#/lib/hooks/use-form-mutation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -36,14 +38,16 @@ export function NavUser({
 }) {
   const { isMobile } = useSidebar();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const mutation = useMutation({
-    mutationFn: logout,
-    onSuccess: () => navigate({ to: "/" }),
-  });
+  // const mutation = useMutation({
+  //   mutationFn: logout,
+  //   onSuccess: () => navigate({ to: "/" }),
+  // });
 
-  const onSubmit = () => mutation.mutate();
+  // const onSubmit = () => mutation.mutate();
+
+  const { mutation, onSubmit} = useLogout();
 
   return (
     <SidebarMenu>
@@ -104,7 +108,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={onSubmit}>
+            <DropdownMenuItem onClick={onSubmit} disabled={mutation.isPending}>
               <LogOutIcon />
               Log out
             </DropdownMenuItem>

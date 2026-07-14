@@ -7,7 +7,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 
 import "../styles.css";
 import type { QueryClient } from "@tanstack/react-query";
-import { Navbar } from "#/components/hero/navbar";
+import { Navbar } from "#/features/hero/navbar";
 
 interface MyRouterContext {
   queryClient: QueryClient;

@@ -1,21 +1,20 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { AppSidebar } from "@/components/app-sidebar"
-import { ChartAreaInteractive } from "@/components/chart-area-interactive"
-import { DataTable } from "@/components/data-table"
-import { SectionCards } from "@/components/section-cards"
-import { SiteHeader } from "@/components/site-header"
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar"
+import { createFileRoute } from "@tanstack/react-router";
+import { AppSidebar } from "#/components/sidebar/app-sidebar";
+import { ChartAreaInteractive } from "#/features/dashboard/chart-area-interactive";
+import { DataTable } from "#/features/dashboard/data-table";
+import { SectionCards } from "#/features/dashboard/section-cards";
+import { SiteHeader } from "@/components/site-header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
-import data from "../lib/api/data.json"
+import data from "../../lib/api/data.json";
 
-export const Route = createFileRoute('/dashboard')({
+export const Route = createFileRoute("/_authenticated/dashboard")({
+  loader: ({ context }) => context.user,
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
+  const user = Route.useLoaderData();
   return (
     <SidebarProvider
       style={
@@ -27,6 +26,8 @@ function RouteComponent() {
     >
       <AppSidebar variant="inset" />
       <SidebarInset>
+        <h1>Welcome {user.firstName}</h1>
+        <h1>Role {user.roles[0]}</h1>
         <SiteHeader />
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">
@@ -41,5 +42,5 @@ function RouteComponent() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

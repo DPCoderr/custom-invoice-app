@@ -13,51 +13,15 @@ import {
   FieldGroup,
   FieldSeparator,
 } from "@/components/ui/field";
-import { useForm } from "react-hook-form";
-import { FormInput } from "./form-input";
-import z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import { login } from "#/lib/api/auth";
-import { useNavigate } from "@tanstack/react-router";
-
-export const loginSchema = z.object({
-  email: z.email().trim(),
-  password: z
-    .string()
-    .min(6)
-    .regex(/[a-z]/)
-    .regex(/[A-Z]/)
-    .regex(/\d/)
-    .regex(/[^a-zA-Z0-9]/),
-});
-
-export type LoginSchemaValues = z.infer<typeof loginSchema>;
+import { FormInput } from "../../components/form-input";
+import { useLoginForm } from "./mutations";
+import { Link } from "@tanstack/react-router";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const navigate = useNavigate();
-
-  const form = useForm<LoginSchemaValues>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-
-  const mutation = useMutation({
-    mutationFn: login,
-    onSuccess: () => navigate({ to: "/dashboard" }),
-    onError: (error) => form.setError("root", { message: error.message }),
-  });
-
-  function onSubmit(data: LoginSchemaValues) {
-    form.clearErrors("root");
-    mutation.mutate(data);
-  }
+  const { form, mutation, onSubmit } = useLoginForm();
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -135,7 +99,7 @@ export function LoginForm({
                   Login
                 </Button>
                 <FieldDescription className="text-center">
-                  Don&apos;t have an account? <a href="#">Sign up</a>
+                  Don&apos;t have an account? <Link to="/signup">Sign up</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>

@@ -7,67 +7,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-} from "@/components/ui/field";
-import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "@tanstack/react-router";
-import { FormInput } from "./form-input";
-import z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { register } from "#/lib/api/auth";
-
-export const registerSchema = z
-  .object({
-    firstName: z.string().trim().min(1),
-    lastName: z.string().trim().min(1),
-    email: z.email().trim(),
-    password: z
-      .string()
-      .min(6)
-      .regex(/[a-z]/)
-      .regex(/[A-Z]/)
-      .regex(/\d/)
-      .regex(/[^a-zA-Z0-9]/),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "Passwords do not match",
-  });
-
-export type RegisterSchemaValues = z.infer<typeof registerSchema>;
+import { Field, FieldDescription, FieldGroup } from "@/components/ui/field";
+import { FormInput } from "../../components/form-input";
+import { useRegisterForm } from "./mutations";
 
 export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const navigate = useNavigate();
-
-  const form = useForm<RegisterSchemaValues>({
-    resolver: zodResolver(registerSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
-
-  const mutation = useMutation({
-    mutationFn: register,
-    onSuccess: () => navigate({ to: "/dashboard" }),
-    onError: (error) => form.setError("root", { message: error.message }),
-  });
-
-  function onSubmit(data: RegisterSchemaValues) {
-    form.clearErrors("root");
-    mutation.mutate(data);
-  }
+  const { form, mutation, onSubmit } = useRegisterForm();
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -123,7 +71,17 @@ export function SignupForm({
                 </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit">Create Account</Button>
+                {form.formState.errors.root && (
+                  <p
+                    role="alert"
+                    className="text-sm text-destructive text-center"
+                  >
+                    {form.formState.errors.root.message}
+                  </p>
+                )}
+                <Button type="submit" disabled={mutation.isPending}>
+                  Create Account
+                </Button>
                 <FieldDescription className="text-center">
                   Already have an account? <a href="#">Sign in</a>
                 </FieldDescription>

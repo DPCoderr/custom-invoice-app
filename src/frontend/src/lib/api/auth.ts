@@ -1,11 +1,19 @@
-import type { LoginSchemaValues } from "#/components/login-form";
-import type { RegisterSchemaValues } from "#/components/signup-form";
+import type {
+  LoginSchemaValues,
+  RegisterSchemaValues,
+} from "#/features/auth/schema";
 
 export type ResponseDto<T = null> = {
-  success: boolean,
-  data: T | null
-  message?: string
-}
+  success: boolean;
+  data: T | null;
+  message?: string;
+};
+export type MeResponseDto = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  roles: string[];
+};
 
 export async function login(data: LoginSchemaValues): Promise<void> {
   let res: Response;
@@ -25,6 +33,8 @@ export async function login(data: LoginSchemaValues): Promise<void> {
 
   if (!res.ok) {
     const body = await res.json().catch(() => null);
+    console.log("body", body);
+    console.log("res", res);
     throw new Error(body?.message ?? "Something went wrong");
   }
 }
@@ -73,8 +83,33 @@ export async function logout(): Promise<ResponseDto> {
   }
 
   if (!body) {
-  throw new Error("Invalid response from server");
-}
+    throw new Error("Invalid response from server");
+  }
 
   return body;
+}
+
+export async function getUser(): Promise<MeResponseDto> {
+  let res: Response;
+
+  try {
+    res = await fetch("http://localhost:5050/api/auth/me", {
+      credentials: "include",
+      method: "GET",
+    });
+  } catch (error) {
+    throw new Error("Failed to connect with the backend. Try it later again.");
+  }
+
+  const body: ResponseDto = await res.json().catch(() => null);
+
+  if (!res.ok) {
+    throw new Error(body?.message ?? "Something went wrong");
+  }
+
+  if (!body) {
+    throw new Error("Invalid response from server");
+  }
+
+  return res.json();
 }

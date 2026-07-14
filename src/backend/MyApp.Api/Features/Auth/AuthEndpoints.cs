@@ -13,8 +13,10 @@ public static class AuthEndpoints
         group.MapPost("/login", Login.Handle)
             .WithName("login");
         group.MapPost("/logout", Logout.Handle)
+            .RequireAuthorization()
             .WithName("logout");
         group.MapGet("/me", Me.Handle)
+            .RequireAuthorization()
             // .RequireAuthorization(p => p.RequireRole(Roles.Admin))
             .WithName("me");
         
