@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.Google;
 using MyApp.Api.Data;
 using MyApp.Api.Features.Auth;
 using Scalar.AspNetCore;
+using QuestPDF.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -76,6 +77,9 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
     options.KnownProxies.Clear();
 });
 
+// QuestPDF
+QuestPDF.Settings.License = LicenseType.Evaluation;
+
 var app = builder.Build();
 
 // Apply any pending migrations to the database on startup
@@ -112,9 +116,12 @@ app.UseAuthorization();
 
 app.MapDefaultEndpoints();
 
+// Endpoints
 var api = app.MapGroup("/api");
 api.MapGet("/", () => "Hello World!");
 api.MapAuthEndpoints();
+api.MapInvoiceEndpoints();
+
 
 app.Run();
 
