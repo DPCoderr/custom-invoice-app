@@ -17,7 +17,8 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.2",
           "QuestPDF": "2026.7.1",
           "Scalar.AspNetCore": "2.16.5",
-          "ServiceDefaults": "1.0.0"
+          "ServiceDefaults": "1.0.0",
+          "Supabase": "1.4.0"
         },
         "runtime": {
           "MyApp.Api.dll": {}
@@ -35,6 +36,14 @@
           "lib/net10.0/Aspire.Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
             "assemblyVersion": "13.4.6.0",
             "fileVersion": "13.400.626.31906"
+          }
+        }
+      },
+      "BirdMessenger/4.0.0": {
+        "runtime": {
+          "lib/net10.0/BirdMessenger.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
           }
         }
       },
@@ -611,6 +620,14 @@
           }
         }
       },
+      "Microsoft.IO.RecyclableMemoryStream/3.0.1": {
+        "runtime": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+            "assemblyVersion": "3.0.1.0",
+            "fileVersion": "3.0.1.0"
+          }
+        }
+      },
       "Microsoft.OpenApi/2.0.0": {
         "runtime": {
           "lib/net8.0/Microsoft.OpenApi.dll": {
@@ -624,6 +641,14 @@
           "lib/net8.0/Microsoft.VisualStudio.SolutionPersistence.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.52.6595"
+          }
+        }
+      },
+      "MimeMapping/4.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/MimeMapping.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
           }
         }
       },
@@ -903,6 +928,96 @@
           }
         }
       },
+      "Supabase/1.4.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "Supabase.Core": "1.2.0",
+          "Supabase.Functions": "2.2.0",
+          "Supabase.Gotrue": "6.2.0",
+          "Supabase.Postgrest": "4.4.0",
+          "Supabase.Realtime": "7.3.0",
+          "Supabase.Storage": "2.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Supabase.dll": {
+            "assemblyVersion": "1.4.0.0",
+            "fileVersion": "1.4.0.0"
+          }
+        }
+      },
+      "Supabase.Core/1.2.0": {
+        "runtime": {
+          "lib/netstandard2.0/Supabase.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Supabase.Functions/2.2.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "Supabase.Core": "1.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Supabase.Functions.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.0"
+          }
+        }
+      },
+      "Supabase.Gotrue/6.2.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "Supabase.Core": "1.2.0",
+          "System.IdentityModel.Tokens.Jwt": "8.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Supabase.Gotrue.dll": {
+            "assemblyVersion": "6.2.0.0",
+            "fileVersion": "6.2.0.0"
+          }
+        }
+      },
+      "Supabase.Postgrest/4.4.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "Supabase.Core": "1.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Supabase.Postgrest.dll": {
+            "assemblyVersion": "4.4.0.0",
+            "fileVersion": "4.4.0.0"
+          }
+        }
+      },
+      "Supabase.Realtime/7.3.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "Supabase.Core": "1.2.0",
+          "Supabase.Postgrest": "4.4.0",
+          "Websocket.Client": "5.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Supabase.Realtime.dll": {
+            "assemblyVersion": "7.3.0.0",
+            "fileVersion": "7.3.0.0"
+          }
+        }
+      },
+      "Supabase.Storage/2.5.0": {
+        "dependencies": {
+          "BirdMessenger": "4.0.0",
+          "MimeMapping": "4.0.0",
+          "Newtonsoft.Json": "13.0.3",
+          "Supabase.Core": "1.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Supabase.Storage.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
       "System.CodeDom/6.0.0": {
         "runtime": {
           "lib/net6.0/System.CodeDom.dll": {
@@ -983,6 +1098,26 @@
           }
         }
       },
+      "System.Reactive/6.1.0": {
+        "runtime": {
+          "lib/net6.0/System.Reactive.dll": {
+            "assemblyVersion": "6.1.0.0",
+            "fileVersion": "6.1.0.62682"
+          }
+        }
+      },
+      "Websocket.Client/5.5.0": {
+        "dependencies": {
+          "Microsoft.IO.RecyclableMemoryStream": "3.0.1",
+          "System.Reactive": "6.1.0"
+        },
+        "runtime": {
+          "lib/net10.0/Websocket.Client.dll": {
+            "assemblyVersion": "5.5.0.0",
+            "fileVersion": "5.5.0.0"
+          }
+        }
+      },
       "ServiceDefaults/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Http.Resilience": "10.6.0",
@@ -1014,6 +1149,13 @@
       "sha512": "sha512-Lt92FuyX4JkKwrAgrOsVARpmk3U9vBGBq784ZEO3hR2vC74o8VS/VWBJHYrRBYTXapuj+mwwPzvcUICmbB43Zg==",
       "path": "aspire.npgsql.entityframeworkcore.postgresql/13.4.6",
       "hashPath": "aspire.npgsql.entityframeworkcore.postgresql.13.4.6.nupkg.sha512"
+    },
+    "BirdMessenger/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K92hTkTn8fkZOjoMi0j0ZhxJ/Ey8ra5nSxuwEc3gZJzT8gdRh6JSSUS6CV4+fyNcjdw1M37/nckubzyMvudvJw==",
+      "path": "birdmessenger/4.0.0",
+      "hashPath": "birdmessenger.4.0.0.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
@@ -1253,6 +1395,13 @@
       "path": "microsoft.identitymodel.tokens/8.0.1",
       "hashPath": "microsoft.identitymodel.tokens.8.0.1.nupkg.sha512"
     },
+    "Microsoft.IO.RecyclableMemoryStream/3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-s/s20YTVY9r9TPfTrN5g8zPF1YhwxyqO6PxUkrYTGI2B+OGPe9AdajWZrLhFqXIvqIW23fnUE4+ztrUWNU1+9g==",
+      "path": "microsoft.io.recyclablememorystream/3.0.1",
+      "hashPath": "microsoft.io.recyclablememorystream.3.0.1.nupkg.sha512"
+    },
     "Microsoft.OpenApi/2.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1266,6 +1415,13 @@
       "sha512": "sha512-oNv2JtYXhpdJrX63nibx1JT3uCESOBQ1LAk7Dtz/sr0+laW0KRM6eKp4CZ3MHDR2siIkKsY8MmUkeP5DKkQQ5w==",
       "path": "microsoft.visualstudio.solutionpersistence/1.0.52",
       "hashPath": "microsoft.visualstudio.solutionpersistence.1.0.52.nupkg.sha512"
+    },
+    "MimeMapping/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5WK3+mjdCeCKg3znVr+sm/sikVnya7UOHWxt4vJeW+Tbp2GgdLiBLRFBJ91oDyL/NcDVd1sEelQ7ixIN68s33g==",
+      "path": "mimemapping/4.0.0",
+      "hashPath": "mimemapping.4.0.0.nupkg.sha512"
     },
     "Mono.TextTemplating/3.0.0": {
       "type": "package",
@@ -1400,6 +1556,55 @@
       "path": "scalar.aspnetcore/2.16.5",
       "hashPath": "scalar.aspnetcore.2.16.5.nupkg.sha512"
     },
+    "Supabase/1.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fypdsEqMr/BNWJUKEmkTwtHfxt6QKUo7a3SAgodUv9f2TKhItMZG5iD8vFR7eQMdx1S4WJIL7oTYTGV25IAF0Q==",
+      "path": "supabase/1.4.0",
+      "hashPath": "supabase.1.4.0.nupkg.sha512"
+    },
+    "Supabase.Core/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jw/2YW+sVgICcCPNE1GUQJMMhdMSuity7cZFki+bgEGsYNQF5Hgpq2YPEzchgnYj8ICnQkoNeu83TgtXj3GfgQ==",
+      "path": "supabase.core/1.2.0",
+      "hashPath": "supabase.core.1.2.0.nupkg.sha512"
+    },
+    "Supabase.Functions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uqGpcjKu7K7XkUdgauxmqMo63gnQFfbXa+P+Zg5++ABOsf1HwEesg5wKmcEcz4mO1/E8oZzGESsbK2I6b6f5kA==",
+      "path": "supabase.functions/2.2.0",
+      "hashPath": "supabase.functions.2.2.0.nupkg.sha512"
+    },
+    "Supabase.Gotrue/6.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-G4gOdFspgt85Xi8b+ZulvVo3fjqZURnR0xPm44O040R328vDpGs6C/6E7G95aPtxMDVu39jRuklu6y1/NH3WhQ==",
+      "path": "supabase.gotrue/6.2.0",
+      "hashPath": "supabase.gotrue.6.2.0.nupkg.sha512"
+    },
+    "Supabase.Postgrest/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-y2FPOyLhNMepVe5dWJF9HsiHdTSsFoigBDg2xvwkPX/bkfi/gjQhsJL/e1e92SyQmDkoJHjumQfvxuQUq3lhAQ==",
+      "path": "supabase.postgrest/4.4.0",
+      "hashPath": "supabase.postgrest.4.4.0.nupkg.sha512"
+    },
+    "Supabase.Realtime/7.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QLNUDpAil5w2MxAe9iM0P05MlH+BIuokJxlD9z4GqR5R7m3SaKW8L3iNzcSUAkti/ooSJDy5G4dd7LIdf7cH6Q==",
+      "path": "supabase.realtime/7.3.0",
+      "hashPath": "supabase.realtime.7.3.0.nupkg.sha512"
+    },
+    "Supabase.Storage/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5O/lCsfmYXAlBX4Ht6TQV21/nCQIvha5ThZdSj5d0lIem+TSR/Kaq8ErLIc5sPxE/joUtx9DXtjzvImhlbpr3w==",
+      "path": "supabase.storage/2.5.0",
+      "hashPath": "supabase.storage.2.5.0.nupkg.sha512"
+    },
     "System.CodeDom/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1455,6 +1660,20 @@
       "sha512": "sha512-GJw3bYkWpOgvN3tJo5X4lYUeIFA2HD293FPUhKmp7qxS+g5ywAb34Dnd3cDAFLkcMohy5XTpoaZ4uAHuw0uSPQ==",
       "path": "system.identitymodel.tokens.jwt/8.0.1",
       "hashPath": "system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512"
+    },
+    "System.Reactive/6.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-M5cCC1ZMkZr9jbSQGTHnVkb5TDN67qWCV7AP8TAHdGkvDlu0puT5NzemESNn9+HkYIDpWpocP68/i+/ame2/2w==",
+      "path": "system.reactive/6.1.0",
+      "hashPath": "system.reactive.6.1.0.nupkg.sha512"
+    },
+    "Websocket.Client/5.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xJ5pTXiNSfwOzJVFcrUF1JROo63zjETJgIA4+ik/JxOJdNEv15e3NZ6bgpNQkyWhapcedP5HCa96hn9YCXwenw==",
+      "path": "websocket.client/5.5.0",
+      "hashPath": "websocket.client.5.5.0.nupkg.sha512"
     },
     "ServiceDefaults/1.0.0": {
       "type": "project",

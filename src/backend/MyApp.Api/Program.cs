@@ -7,6 +7,7 @@ using MyApp.Api.Data;
 using MyApp.Api.Features.Auth;
 using Scalar.AspNetCore;
 using QuestPDF.Infrastructure;
+using Supabase;
 
 var builder = WebApplication.CreateBuilder(args);
 
