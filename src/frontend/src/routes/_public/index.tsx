@@ -1,14 +1,7 @@
-import { userQueryOptions } from "#/lib/queries/user-query-options";
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_public/")({
   component: Home,
-  beforeLoad: async ({ context }) => {
-  const user = await context.queryClient.ensureQueryData(userQueryOptions)
-  if (user) {
-    throw redirect({ to: "/dashboard" });
-  }
-},
   pendingComponent: () => <div>Waiting</div>,
   errorComponent: () => <div>OOPS something went wrong</div>,
 });

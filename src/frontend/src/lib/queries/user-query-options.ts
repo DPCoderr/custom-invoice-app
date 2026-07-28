@@ -4,4 +4,5 @@ import { getUser } from "../api/user";
 export const userQueryOptions = queryOptions({
   queryKey: ["user"] as const,
   queryFn: getUser,
+  retry: false,
 });
