@@ -1,0 +1,7 @@
+/AppHost/bin/
+/AppHost/obj/
+/ServiceDefaults/bin 
+/ServiceDefaults/obj 
+/backend/MyApp.Api/bin 
+/backend/MyApp.Api/obj
+

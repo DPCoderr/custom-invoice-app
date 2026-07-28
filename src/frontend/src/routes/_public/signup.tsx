@@ -1,15 +1,8 @@
 import { SignupForm } from "#/features/auth/signup-form";
-import { createFileRoute, redirect } from "@tanstack/react-router";
-import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { createFileRoute } from "@tanstack/react-router";
 import { GalleryVerticalEnd } from "lucide-react";
 
 export const Route = createFileRoute("/_public/signup")({
-  beforeLoad: async ({ context }) => {
-    const user = await context.queryClient.ensureQueryData(userQueryOptions);
-    if (user) {
-      throw redirect({ to: "/dashboard" });
-    }
-  },
   component: Signup,
 });
 

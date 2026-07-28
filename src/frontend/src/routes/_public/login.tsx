@@ -1,16 +1,9 @@
 import { GalleryVerticalEnd } from "lucide-react";
 import { LoginForm } from "#/features/auth/login-form";
 
-import { createFileRoute, redirect } from "@tanstack/react-router";
-import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_public/login")({
-  beforeLoad: async ({ context }) => {
-    const user = await context.queryClient.ensureQueryData(userQueryOptions);
-    if (user) {
-      throw redirect({ to: "/dashboard" });
-    }
-  },
   component: Login,
 });
 
