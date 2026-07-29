@@ -1,46 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AppSidebar } from "#/components/sidebar/app-sidebar";
-import { ChartAreaInteractive } from "#/features/dashboard/chart-area-interactive";
-import { DataTable } from "#/features/dashboard/data-table";
-import { SectionCards } from "#/features/dashboard/section-cards";
-import { SiteHeader } from "@/components/site-header";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 import data from "../../lib/api/data.json";
+import { SectionCards } from "#/features/dashboard/section-cards";
+import { DataTable } from "#/features/dashboard/data-table";
+import { ChartAreaInteractive } from "#/features/dashboard/chart-area-interactive";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
-  loader: ({ context }) => context.user,
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const user = Route.useLoaderData();
   return (
-    <SidebarProvider
-      style={
-        {
-          "--sidebar-width": "calc(var(--spacing) * 72)",
-          "--header-height": "calc(var(--spacing) * 12)",
-        } as React.CSSProperties
-      }
-    >
-      <AppSidebar variant="inset" />
-      <SidebarInset>
-        <h1>Welcome {user.firstName}</h1>
-        <h1>Role {user.roles[0]}</h1>
-        <SiteHeader />
-        <div className="flex flex-1 flex-col">
-          <div className="@container/main flex flex-1 flex-col gap-2">
-            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-              <SectionCards />
-              <div className="px-4 lg:px-6">
-                <ChartAreaInteractive />
-              </div>
-              <DataTable data={data} />
-            </div>
+    <div className="flex flex-1 flex-col">
+      <div className="@container/main flex flex-1 flex-col gap-2">
+        <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+          <SectionCards />
+          <div className="px-4 lg:px-6">
+            <ChartAreaInteractive />
           </div>
+          <DataTable data={data} />
         </div>
-      </SidebarInset>
-    </SidebarProvider>
+      </div>
+    </div>
   );
 }

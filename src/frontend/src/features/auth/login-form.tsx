@@ -13,7 +13,7 @@ import {
   FieldGroup,
   FieldSeparator,
 } from "@/components/ui/field";
-import { FormInput } from "../../components/form-input";
+import { FormInput } from "../../components/form/form-input";
 import { useLoginForm } from "./mutations";
 import { Link } from "@tanstack/react-router";
 

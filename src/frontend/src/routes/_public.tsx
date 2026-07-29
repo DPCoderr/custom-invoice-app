@@ -1,3 +1,4 @@
+import { Navbar } from "#/components/navbar";
 import { userQueryOptions } from "#/lib/queries/user-query-options";
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
@@ -8,5 +9,15 @@ export const Route = createFileRoute("/_public")({
       throw redirect({ to: "/dashboard" });
     }
   },
-  component: Outlet,
+  component: RootComponent,
 });
+
+function RootComponent() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
+}
+

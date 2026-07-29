@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Field, FieldDescription, FieldGroup } from "@/components/ui/field";
-import { FormInput } from "../../components/form-input";
+import { FormInput } from "../../components/form/form-input";
 import { useRegisterForm } from "./mutations";
 
 export function SignupForm({
