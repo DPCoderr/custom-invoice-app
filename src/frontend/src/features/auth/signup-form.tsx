@@ -9,14 +9,45 @@ import {
 } from "@/components/ui/card";
 import { Field, FieldDescription, FieldGroup } from "@/components/ui/field";
 import { FormInput } from "../../components/form/form-input";
-import { useRegisterForm } from "./mutations";
+import { useNavigate } from "@tanstack/react-router";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { registerSchema, type RegisterSchemaType } from "./schema";
+import { register } from "#/lib/api/auth";
+import { userQueryOptions } from "#/lib/queries/user-query-options";
 
 export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const { form, mutation, onSubmit } = useRegisterForm();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
+  const form = useForm({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  const mutation = useMutation({
+    mutationFn: register,
+    onSuccess: () => {
+      queryClient.removeQueries({ queryKey: userQueryOptions.queryKey });
+      navigate({ to: "/dashboard" });
+    },
+    onError: (error) => form.setError("root", { message: error.message }),
+  });
+
+  function onSubmit(data: RegisterSchemaType) {
+    form.clearErrors("root");
+    mutation.mutate(data);
+  }
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>

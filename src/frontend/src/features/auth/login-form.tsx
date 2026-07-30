@@ -14,14 +14,42 @@ import {
   FieldSeparator,
 } from "@/components/ui/field";
 import { FormInput } from "../../components/form/form-input";
-import { useLoginForm } from "./mutations";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { login } from "#/lib/api/auth";
+import { loginSchema, type LoginSchemaType } from "./schema";
+import { userQueryOptions } from "#/lib/queries/user-query-options";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const { form, mutation, onSubmit } = useLoginForm();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const form = useForm({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const mutation = useMutation({
+    mutationFn: login,
+    onSuccess: () => {
+      queryClient.removeQueries({ queryKey: userQueryOptions.queryKey });
+      navigate({ to: "/dashboard" });
+    },
+    onError: (error) => form.setError("root", { message: error.message }),
+  });
+
+  function onSubmit(data: LoginSchemaType) {
+    form.clearErrors("root");
+    mutation.mutate(data);
+  }
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>

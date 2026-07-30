@@ -11,13 +11,13 @@ export const Route = createFileRoute("/_authenticated")({
     if (!user) {
       throw redirect({ to: "/login", search: { redirect: location.href } });
     }
-
     return { user };
   },
   component: RootComponent,
 });
 
 function RootComponent() {
+  const { user } = Route.useRouteContext();
   return (
     <>
       <SidebarProvider
@@ -28,7 +28,7 @@ function RootComponent() {
           } as React.CSSProperties
         }
       >
-        <AppSidebar variant="inset" />
+        <AppSidebar variant="inset" user={user} />
         <SidebarInset>
           <SiteHeader />
           <Outlet />

@@ -1,6 +1,7 @@
 import { useLogout } from "#/features/auth/mutations";
 import { logout } from "#/lib/api/auth";
-import { useFormMutation } from "#/lib/hooks/use-form-mutation";
+import type { UserDto } from "#/lib/api/user";
+import { userQueryOptions } from "#/lib/queries/user-query-options";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -17,7 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import {
   EllipsisVerticalIcon,
@@ -27,27 +28,23 @@ import {
   LogOutIcon,
 } from "lucide-react";
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string;
-    email: string;
-    avatar: string;
-  };
-}) {
+export function NavUser({ user }: { user: UserDto }) {
+  // Hardcoded avatar
+  const avatar = "/avatars/shadcn.jpg";
+
   const { isMobile } = useSidebar();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
-  // const navigate = useNavigate();
+  const mutation = useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      queryClient.setQueryData(userQueryOptions.queryKey, null);
+      navigate({ to: "/login" });
+    },
+  });
 
-  // const mutation = useMutation({
-  //   mutationFn: logout,
-  //   onSuccess: () => navigate({ to: "/" }),
-  // });
-
-  // const onSubmit = () => mutation.mutate();
-
-  const { mutation, onSubmit} = useLogout();
+  const onSubmit = () => mutation.mutate();
 
   return (
     <SidebarMenu>
@@ -59,11 +56,11 @@ export function NavUser({
             }
           >
             <Avatar className="size-8 rounded-lg grayscale">
-              <AvatarImage src={user.avatar} alt={user.name} />
+              <AvatarImage src={avatar} alt={user.firstName} />
               <AvatarFallback className="rounded-lg">CN</AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">{user.name}</span>
+              <span className="truncate font-medium">{user.firstName}</span>
               <span className="truncate text-xs text-foreground/70">
                 {user.email}
               </span>
@@ -80,11 +77,13 @@ export function NavUser({
               <DropdownMenuLabel className="p-0 font-normal">
                 <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                   <Avatar className="size-8">
-                    <AvatarImage src={user.avatar} alt={user.name} />
+                    <AvatarImage src={avatar} alt={user.firstName} />
                     <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">{user.name}</span>
+                    <span className="truncate font-medium">
+                      {user.firstName}
+                    </span>
                     <span className="truncate text-xs text-muted-foreground">
                       {user.email}
                     </span>

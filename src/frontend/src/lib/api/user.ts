@@ -1,6 +1,6 @@
 export type UserDto = {
-  firstName: String;
-  lastName: String;
+  firstName: string;
+  lastName: string;
   email: string;
   roles: string[];
 };
