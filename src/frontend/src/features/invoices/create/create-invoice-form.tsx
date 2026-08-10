@@ -22,12 +22,13 @@ export function CreateInvoiceForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [issueDate, setIssueDate] = useState<Date | undefined>(new Date());
+  const [dueDate, setDueDate] = useState<Date | undefined>(new Date());
   const form = useForm({
     defaultValues: {
       clientName: "",
-      issueDate: date,
-      dueDate: date,
+      issueDate: issueDate,
+      dueDate: dueDate,
       notes: "",
     },
     resolver: zodResolver(createInvoiceSchema),

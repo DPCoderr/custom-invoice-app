@@ -1,17 +1,18 @@
 using Microsoft.AspNetCore.Http.HttpResults;
+using MyApp.Api;
 using QuestPDF.Fluent;
 using Supabase;
 
-
-public static class Upload
+public static class Handler
 {
-	public static async Task<IResult> Handle(
+	public static async Task<Result<string>> Handle(
+		InvoiceDto request,
+		CancellationToken cancellationToken,
 		IConfiguration configuration
 	)
 	{
 		var model = InvoiceDocumentDataSource.GetInvoiceDetails();
 		var document = new InvoiceDocument(model);
-		// document.GeneratePdfAndShow();
 
 		byte[] pdf = document.GeneratePdf();
 
@@ -25,26 +26,18 @@ public static class Upload
 			configuration["Supabase:SupabaseKey"]!,
 			options
 		);
+		
 		await supabase.InitializeAsync();
-
-
 		var fileName = $"invoices/{Guid.NewGuid()}.pdf";
-
 
 		await supabase.Storage
 			.From("invoices")
-			.Upload(
-        pdf,
-				fileName,
-        new Supabase.Storage.FileOptions
-        {
-            ContentType = "application/pdf",
-						Upsert = true
-        });
+			.Upload(pdf, fileName, new Supabase.Storage.FileOptions
+			{
+	            ContentType = "application/pdf",
+		        Upsert = true
+			}, cancellationToken:  cancellationToken);
 
-		return Results.Ok(new
-    {
-        Path = fileName
-    });
+		return Result<string>.Success("File successfully made");
 	}
 }

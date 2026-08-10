@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
@@ -5,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Google;
 using MyApp.Api.Data;
 using MyApp.Api.Features.Auth;
+using MyApp.Api.Shared;
 using Scalar.AspNetCore;
 using QuestPDF.Infrastructure;
 using Supabase;
@@ -12,6 +14,7 @@ using Supabase;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+builder.Services.AddFeatureServices(); 
 builder.AddNpgsqlDbContext<AppDbContext>("appdb");
 
 builder.Services.AddProblemDetails();
@@ -121,8 +124,7 @@ app.MapDefaultEndpoints();
 var api = app.MapGroup("/api");
 api.MapGet("/", () => "Hello World!");
 api.MapAuthEndpoints();
-api.MapInvoiceEndpoints();
-
+app.MapFeatureEndpoints();   
 
 app.Run();
 
