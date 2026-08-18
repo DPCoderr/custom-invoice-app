@@ -3,7 +3,7 @@ using MyApp.Api;
 using QuestPDF.Fluent;
 using Supabase;
 
-public static class Handler
+public static class CreateInvoiceHandler
 {
 	public static async Task<Result<string>> Handle(
 		InvoiceDto request,

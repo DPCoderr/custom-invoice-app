@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using MyApp.Api.Data;
 using MyApp.Api.Shared;
 
-public class Endpoint : IEndpoint 
+public class CreateInvoiceEndpoint : IEndpoint 
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
@@ -17,7 +17,7 @@ public class Endpoint : IEndpoint
     )
     {
     	// Implementation for handling the create invoice request
-    	var invoice = await Handler.Handle(request, cancellationToken, configuration);
+    	var invoice = await CreateInvoiceHandler.Handle(request, cancellationToken, configuration);
     	
     	return TypedResults.Ok("Invoice created successfully");
     }
