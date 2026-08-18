@@ -1,27 +1,41 @@
-public sealed record InvoiceDto(
-    int Id,
-    string InvoiceNumber,
-    DateTime IssueDate,
-    DateTime DueDate,
-    CustomerDto Customer,
-    List<InvoiceLineDto> Lines,
-    string? Notes,
-    Guid OwnerUserId,
-    bool IsPaid,
-    DateTime CreatedAt
-);
-
-public sealed record CustomerDto(
-    string Name,
-    string Street,
-    string PostalCode,
-    string City,
-    string Email
-);
-
-public sealed record InvoiceLineDto(
-    string Description,
+public record CreateInvoiceItemRequest(
+    Guid? ServiceId,
+    string ServiceName,
     decimal UnitPrice,
-    int Quantity,
-    decimal VatRate = 0.21m
+    decimal Quantity
 );
+
+public record CreateInvoiceRequest(
+    DateOnly IssueDate,
+    DateOnly DueDate,
+    string CustomerName,
+    string? CustomerEmail,
+    string? CustomerAddress,
+    string Currency,
+    string? Notes,
+    IReadOnlyList<CreateInvoiceItemRequest> Items
+);
+
+public record CreateServiceRequest(
+    string Name,
+    string? Description,
+    decimal DefaultUnitPrice
+);
+
+public record InvoiceResponse(
+    Guid Id,
+    string InvoiceNumber,
+    DateOnly IssueDate,
+    DateOnly DueDate,
+    decimal TotalAmount,
+    string Currency,
+    string? PdfPath
+);
+
+public record ServiceResponse(
+    Guid Id,
+    string Name,
+    string? Description,
+    decimal DefaultUnitPrice
+);
+
