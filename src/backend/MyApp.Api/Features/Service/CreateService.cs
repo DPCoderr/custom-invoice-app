@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using FluentValidation;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using MyApp.Api.Data;
@@ -27,7 +28,24 @@ public class CreateService
         {
             app.MapPost("/services/create", Handler.Handle)
                 .WithName("CreateService")
+                .AddEndpointFilter<ValidationFilter<CreateServiceRequest>>()
                 .RequireAuthorization();
+        }
+    }
+    
+    public class Validator : AbstractValidator<CreateServiceRequest>
+    {
+        public Validator()
+        {
+            RuleFor(x => x.Name)
+                .NotEmpty()
+                .MaximumLength(100);
+
+            RuleFor(x => x.Description)
+                .MaximumLength(250);
+
+            RuleFor(x => x.DefaultUnitPrice)
+                .GreaterThanOrEqualTo(0);
         }
     }
 
