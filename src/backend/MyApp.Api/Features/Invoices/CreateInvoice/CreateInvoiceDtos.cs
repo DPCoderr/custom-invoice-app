@@ -16,12 +16,6 @@ public record CreateInvoiceRequest(
     IReadOnlyList<CreateInvoiceItemRequest> Items
 );
 
-public record CreateServiceRequest(
-    string Name,
-    string? Description,
-    decimal DefaultUnitPrice
-);
-
 public record InvoiceResponse(
     Guid Id,
     string InvoiceNumber,
@@ -32,10 +26,4 @@ public record InvoiceResponse(
     string? PdfPath
 );
 
-public record ServiceResponse(
-    Guid Id,
-    string Name,
-    string? Description,
-    decimal DefaultUnitPrice
-);
 

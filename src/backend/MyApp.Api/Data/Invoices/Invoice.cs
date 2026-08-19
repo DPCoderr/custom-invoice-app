@@ -5,7 +5,7 @@ public class Invoice
 {
     public Guid Id { get; set; }
 
-    public Guid UserId { get; set; }
+    public string UserId { get; set; } = string.Empty;
 
     public Guid InvoiceNumber { get; set; }
 
