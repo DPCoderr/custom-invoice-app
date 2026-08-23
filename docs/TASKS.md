@@ -516,7 +516,7 @@ test.
 
 ### I18N-001 — Establish English locale resources
 
-**Status:** Ready. Can run before invoice frontend tickets.
+**Status:** Done. English resources, fixed initialization, and focused tests were added in `I18N-001`.
 **Purpose:** Prevent new screens from spreading hardcoded copy while still shipping English only.
 **Expected area:** localization bootstrap, English resources, existing app-owned screens.
 **Estimated size:** 200–400 lines plus lockfile.

@@ -1,4 +1,5 @@
 import type { CreateInvoiceType } from "../schema";
+import i18n from "#/i18n";
 
 type CreateInvoiceResponseDto = {
   message: string;
@@ -20,11 +21,11 @@ export async function createInvoice(
     const body: CreateInvoiceResponseDto = await res.json().catch(() => null);
 
     if (!res.ok) {
-      throw new Error(body?.message ?? "Something went wrong");
+      throw new Error(body?.message ?? i18n.t("common:errors.generic"));
     }
 
     if (!body) {
-      throw new Error("Invalid response from server");
+      throw new Error(i18n.t("invoices:errors.invalidResponse"));
     }
 
     return body;
@@ -32,6 +33,6 @@ export async function createInvoice(
     if (error instanceof Error) {
       throw error;
     }
-    throw new Error("Failed to connect with the backend. Try it later again.");
+    throw new Error(i18n.t("common:errors.connection"));
   }
 }

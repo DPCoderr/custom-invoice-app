@@ -1,12 +1,15 @@
 import { SignupForm } from "#/features/auth/signup-form";
 import { createFileRoute } from "@tanstack/react-router";
 import { GalleryVerticalEnd } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/_public/signup")({
   component: Signup,
 });
 
 function Signup() {
+  const { t } = useTranslation("common");
+
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
       <div className="flex w-full max-w-sm flex-col gap-6">
@@ -14,7 +17,7 @@ function Signup() {
           <div className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
             <GalleryVerticalEnd className="size-4" />
           </div>
-          Invoice Generator
+          {t("appName")}
         </a>
         <SignupForm />
       </div>

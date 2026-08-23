@@ -13,8 +13,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { CalendarIcon } from "lucide-react";
-import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { formatDate } from "#/i18n/formatters";
+import { useTranslation } from "react-i18next";
 
 interface FormDatePickerProps<T extends FieldValues> {
   name: Path<T>;
@@ -27,6 +28,8 @@ export function FormDatePicker<T extends FieldValues>({
   control,
   label,
 }: FormDatePickerProps<T>) {
+  const { t } = useTranslation("common");
+
   return (
     <Controller
       name={name}
@@ -49,9 +52,9 @@ export function FormDatePicker<T extends FieldValues>({
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
                   {field.value ? (
-                    format(field.value, "PPP")
+                    formatDate(field.value)
                   ) : (
-                    <span>Kies een datum</span>
+                    <span>{t("datePicker.placeholder")}</span>
                   )}
                 </Button>
               }

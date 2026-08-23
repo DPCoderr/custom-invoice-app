@@ -1,3 +1,4 @@
+import i18n from "#/i18n";
 import z from "zod";
 
 export const loginSchema = z.object({
@@ -27,7 +28,7 @@ export const registerSchema = z
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
-    message: "Passwords do not match",
+    message: i18n.t("auth:validation.passwordsDoNotMatch"),
   });
 
 export type LoginSchemaType = z.infer<typeof loginSchema>;
