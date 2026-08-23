@@ -21,8 +21,8 @@ The repository contains a foundation, not a finished invoice workflow.
 | Invoices | Scaffold only | Entities and an initial migration exist. Create, list, detail, and download endpoints are not functional. |
 | PDF generation | Scaffold only | QuestPDF template code exists but is commented out and uses sample data. |
 | PDF storage | Scaffold only | Supabase upload code exists but is commented out and is not registered through dependency injection. |
-| Frontend | Foundation | Authentication screens, a minimal dashboard, and an authenticated shell exist. Invoice screens remain incomplete and use mock data. |
-| Tests | Missing | Vitest is configured but has no tests. There is no backend test project. |
+| Frontend | Foundation | Authentication screens, a minimal dashboard, an authenticated shell, and fixed English locale resources exist. Invoice screens remain incomplete and use mock data. |
+| Tests | Partial | Focused frontend localization tests exist. There is no backend test project. |
 
 See [Architecture](docs/ARCHITECTURE.md) for the current and target designs and
 [Tasks](docs/TASKS.md) for the ordered implementation backlog.
@@ -129,7 +129,7 @@ Observed baseline on 2026-08-23:
 
 - the frontend production build passes with a large-chunk warning;
 - Biome lint passes with zero errors and warnings after `FND-001`;
-- Vitest exits with no test files found;
+- focused frontend localization tests pass with Vitest;
 - `ServiceDefaults` and `MyApp.Api` compile;
 - the full solution check is blocked in the Codex sandbox because the Aspire SDK resolver cannot
   read the host user's NuGet configuration.

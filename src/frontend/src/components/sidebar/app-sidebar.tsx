@@ -18,26 +18,26 @@ import {
 } from "lucide-react";
 import type { UserDto } from "#/lib/api/user";
 import { Link } from "@tanstack/react-router";
-
-const data = {
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: <LayoutDashboardIcon />,
-    },
-    {
-      title: "Invoices",
-      url: "/invoices",
-      icon: <FolderIcon />,
-    },
-  ],
-};
+import { useTranslation } from "react-i18next";
 
 export function AppSidebar({
   user,
   ...props
 }: React.ComponentProps<typeof Sidebar> & { user: UserDto }) {
+  const { t } = useTranslation("common");
+  const navMain = [
+    {
+      title: t("navigation.dashboard"),
+      url: "/dashboard",
+      icon: <LayoutDashboardIcon />,
+    },
+    {
+      title: t("navigation.invoices"),
+      url: "/invoices",
+      icon: <FolderIcon />,
+    },
+  ];
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -45,16 +45,16 @@ export function AppSidebar({
           <SidebarMenuItem>
             <SidebarMenuButton
               className="data-[slot=sidebar-menu-button]:p-1.5!"
-              render={<Link to="/" aria-label="Home" />}
+              render={<Link to="/" aria-label={t("navigation.home")} />}
             >
               <CommandIcon className="size-5!" />
-              <span className="text-base font-semibold">Invoice Generator</span>
+              <span className="text-base font-semibold">{t("appName")}</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={navMain} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={user} />

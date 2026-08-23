@@ -2,13 +2,16 @@ import { PageWrapper } from "#/components/layout/page-wrapper";
 import { SectionWrapper } from "#/components/layout/section-wrapper";
 import { Button } from "#/components/ui/button";
 import type { InvoiceListItem } from "#/features/invoices/types";
+import { formatCurrency } from "#/i18n/formatters";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/_authenticated/invoices/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const { t } = useTranslation("invoices");
   const invoices: InvoiceListItem[] = [
     {
       id: "d290f1ee-6c54-4b01-90e6-d701748f0851",
@@ -61,10 +64,10 @@ function RouteComponent() {
     <PageWrapper>
       <SectionWrapper>
         <div className="flex justify-between">
-          <h1 className="text-2xl font-bold">Invoices</h1>
+          <h1 className="text-2xl font-bold">{t("title")}</h1>
           <Button
             nativeButton={false}
-            render={<Link to="/invoices/create">Create Invoice</Link>}
+            render={<Link to="/invoices/create">{t("create.submit")}</Link>}
           />
         </div>
         <div className="mt-10">
@@ -72,7 +75,7 @@ function RouteComponent() {
             {invoices.map((invoice) => (
               <div className="flex justify-between" key={invoice.id}>
                 <p>{invoice.clientName}</p>
-                <p>{invoice.total}</p>
+                <p>{formatCurrency(invoice.total, invoice.currency)}</p>
                 <p>{invoice.status}</p>
               </div>
             ))}

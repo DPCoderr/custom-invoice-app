@@ -17,8 +17,10 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { EllipsisVerticalIcon, LogOutIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export function NavUser({ user }: { user: UserDto }) {
+  const { t } = useTranslation("auth");
   const initials = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`.toUpperCase();
 
   const { isMobile } = useSidebar();
@@ -63,7 +65,7 @@ export function NavUser({ user }: { user: UserDto }) {
           >
             <DropdownMenuItem onClick={onSubmit} disabled={mutation.isPending}>
               <LogOutIcon />
-              Log out
+              {t("logout")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

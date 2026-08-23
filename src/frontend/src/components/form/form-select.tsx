@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslation } from "react-i18next";
 
 interface Option {
   label: string;
@@ -26,8 +27,10 @@ export function FormSelect<T extends FieldValues>({
   control,
   label,
   options,
-  placeholder = "Kies een optie",
+  placeholder,
 }: FormSelectProps<T>) {
+  const { t } = useTranslation("common");
+
   return (
     <Controller
       name={name}
@@ -37,7 +40,9 @@ export function FormSelect<T extends FieldValues>({
           <FieldLabel htmlFor={name}>{label}</FieldLabel>
           <Select value={field.value} onValueChange={field.onChange}>
             <SelectTrigger id={name} aria-invalid={!!fieldState.error}>
-              <SelectValue placeholder={placeholder} />
+              <SelectValue
+                placeholder={placeholder ?? t("select.placeholder")}
+              />
             </SelectTrigger>
             <SelectContent>
               {options.map((o) => (

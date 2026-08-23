@@ -21,11 +21,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { login } from "#/lib/api/auth";
 import { loginSchema, type LoginSchemaType } from "./schema";
 import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { useTranslation } from "react-i18next";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const { t } = useTranslation("auth");
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -55,8 +57,8 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Welcome back</CardTitle>
-          <CardDescription>Sign in with Google or your email</CardDescription>
+          <CardTitle className="text-xl">{t("login.title")}</CardTitle>
+          <CardDescription>{t("login.description")}</CardDescription>
         </CardHeader>
         <CardContent>
           <form id="login-form" onSubmit={form.handleSubmit(onSubmit)}>
@@ -80,26 +82,26 @@ export function LoginForm({
                           fill="currentColor"
                         />
                       </svg>
-                      Login with Google
+                      {t("login.google")}
                     </a>
                   }
                 ></Button>
               </Field>
               <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
-                Or continue with
+                {t("login.divider")}
               </FieldSeparator>
 
               {/* Manual inputs */}
               <FormInput
                 name="email"
                 control={form.control}
-                label="Email"
+                label={t("fields.email")}
                 type="email"
               />
               <FormInput
                 name="password"
                 control={form.control}
-                label="Password"
+                label={t("fields.password")}
                 type="password"
               />
               <Field>
@@ -112,10 +114,11 @@ export function LoginForm({
                   </p>
                 )}
                 <Button type="submit" disabled={mutation.isPending}>
-                  Login
+                  {t("login.submit")}
                 </Button>
                 <FieldDescription className="text-center">
-                  Don&apos;t have an account? <Link to="/signup">Sign up</Link>
+                  {t("login.noAccount")} {" "}
+                  <Link to="/signup">{t("login.signupLink")}</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>

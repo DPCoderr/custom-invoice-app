@@ -1,8 +1,11 @@
+import i18n from "#/i18n";
 import { z } from "zod";
 
 export const invoiceLineSchema = z.object({
   serviceId: z.string().uuid().optional(),
-  description: z.string().min(1, "Omschrijving is verplicht"),
+  description: z
+    .string()
+    .min(1, i18n.t("invoices:validation.descriptionRequired")),
   quantity: z.number().positive(),
   unitPrice: z.number().nonnegative(),
   vatRate: z.number().min(0).max(100),
@@ -11,13 +14,15 @@ export const invoiceLineSchema = z.object({
 export const createInvoiceSchema = z
   .object({
     clientName: z.string().min(1),
-    issueDate: z.date({ error: "Factuurdatum is verplicht" }),
-    dueDate: z.date({ error: "Vervaldatum is verplicht" }),
+    issueDate: z.date({ error: i18n.t("invoices:validation.issueDateRequired") }),
+    dueDate: z.date({ error: i18n.t("invoices:validation.dueDateRequired") }),
     notes: z.string().optional(),
-    // lines: z.array(invoiceLineSchema).min(1, "Voeg minstens één regel toe"),
+    // lines: z
+    //   .array(invoiceLineSchema)
+    //   .min(1, i18n.t("invoices:validation.lineRequired")),
   })
   .refine((data) => data.dueDate >= data.issueDate, {
-    message: "Vervaldatum moet na de factuurdatum liggen",
+    message: i18n.t("invoices:validation.dueDateAfterIssue"),
     path: ["dueDate"],
   });
 

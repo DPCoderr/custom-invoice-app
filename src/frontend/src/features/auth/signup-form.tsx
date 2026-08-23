@@ -16,11 +16,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { registerSchema, type RegisterSchemaType } from "./schema";
 import { register } from "#/lib/api/auth";
 import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { useTranslation } from "react-i18next";
 
 export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const { t } = useTranslation("auth");
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -52,10 +54,8 @@ export function SignupForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Create your account</CardTitle>
-          <CardDescription>
-            Enter your email below to create your account
-          </CardDescription>
+          <CardTitle className="text-xl">{t("signup.title")}</CardTitle>
+          <CardDescription>{t("signup.description")}</CardDescription>
         </CardHeader>
         <CardContent>
           <form id="signup-form" onSubmit={form.handleSubmit(onSubmit)}>
@@ -63,23 +63,23 @@ export function SignupForm({
               <FormInput
                 name="firstName"
                 control={form.control}
-                label="Firstname"
-                placeholder="John"
+                label={t("fields.firstName")}
+                placeholder={t("placeholders.firstName")}
                 type="text"
               />
               <FormInput
                 name="lastName"
                 control={form.control}
-                label="Lastname"
-                placeholder="Doe"
+                label={t("fields.lastName")}
+                placeholder={t("placeholders.lastName")}
                 type="text"
               />
 
               <FormInput
                 name="email"
                 control={form.control}
-                label="Email"
-                placeholder="j.doe@gmail.com"
+                label={t("fields.email")}
+                placeholder={t("placeholders.email")}
                 type="email"
               />
               <Field>
@@ -87,18 +87,18 @@ export function SignupForm({
                   <FormInput
                     name="password"
                     control={form.control}
-                    label="Password"
+                    label={t("fields.password")}
                     type="password"
                   />
                   <FormInput
                     name="confirmPassword"
                     control={form.control}
-                    label="Confirm Password"
+                    label={t("fields.confirmPassword")}
                     type="password"
                   />
                 </Field>
                 <FieldDescription>
-                  Must be at least 6 characters long.
+                  {t("passwordHint")}
                 </FieldDescription>
               </Field>
               <Field>
@@ -111,10 +111,11 @@ export function SignupForm({
                   </p>
                 )}
                 <Button type="submit" disabled={mutation.isPending}>
-                  Create Account
+                  {t("signup.submit")}
                 </Button>
                 <FieldDescription className="text-center">
-                  Already have an account? <Link to="/login">Sign in</Link>
+                  {t("signup.existingAccount")} {" "}
+                  <Link to="/login">{t("signup.loginLink")}</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>

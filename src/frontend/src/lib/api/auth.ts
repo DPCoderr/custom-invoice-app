@@ -2,6 +2,7 @@ import type {
   LoginSchemaType,
   RegisterSchemaType,
 } from "#/features/auth/schema";
+import i18n from "#/i18n";
 
 export async function login(data: LoginSchemaType): Promise<void> {
   try {
@@ -17,10 +18,10 @@ export async function login(data: LoginSchemaType): Promise<void> {
       const body = await res.json().catch(() => null);
       console.log("body", body);
       console.log("res", res);
-      throw new Error(body?.message ?? "Something went wrong");
+      throw new Error(body?.message ?? i18n.t("common:errors.generic"));
     }
   } catch {
-    throw new Error("Failed to connect with the backend. Try it later again.");
+    throw new Error(i18n.t("common:errors.connection"));
   }
 }
 
@@ -36,10 +37,10 @@ export async function register(data: RegisterSchemaType): Promise<void> {
     });
     if (!res.ok) {
       const body = await res.json().catch(() => null);
-      throw new Error(body?.message ?? "Something went wrong");
+      throw new Error(body?.message ?? i18n.t("common:errors.generic"));
     }
   } catch {
-    throw new Error("Failed to connect with the backend. Try it later again.");
+    throw new Error(i18n.t("common:errors.connection"));
   }
 }
 
@@ -55,10 +56,10 @@ export async function logout(): Promise<void> {
 
     if (!res.ok) {
       const body = await res.json().catch(() => null);
-      throw new Error(body?.message ?? "Something went wrong");
+      throw new Error(body?.message ?? i18n.t("common:errors.generic"));
     }
 
   } catch {
-    throw new Error("Failed to connect with the backend. Try it later again.");
+    throw new Error(i18n.t("common:errors.connection"));
   }
 }

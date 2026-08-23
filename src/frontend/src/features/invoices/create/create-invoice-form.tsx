@@ -13,11 +13,13 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { createInvoice } from "./mutation";
 import { FormDatePicker } from "#/components/form/form-date-picker";
+import { useTranslation } from "react-i18next";
 
 export function CreateInvoiceForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const { t } = useTranslation("invoices");
   const form = useForm({
     defaultValues: {
       clientName: "",
@@ -30,7 +32,7 @@ export function CreateInvoiceForm({
 
   const mutation = useMutation({
     mutationFn: createInvoice,
-    onSuccess: () => toast.success("Invoice successfully send"),
+    onSuccess: () => toast.success(t("create.success")),
     onError: (error) => form.setError("root", { message: error.message }),
   });
 
@@ -48,18 +50,18 @@ export function CreateInvoiceForm({
               <FormInput
                 name="clientName"
                 control={form.control}
-                label="Client Name"
+                label={t("fields.clientName")}
                 type="text"
               />
               <FormDatePicker
                 name="issueDate"
                 control={form.control}
-                label="Issue Date"
+                label={t("fields.issueDate")}
               />
               <FormDatePicker
                 name="dueDate"
                 control={form.control}
-                label="Due Date"
+                label={t("fields.dueDate")}
               />
 
               <Field>
@@ -72,7 +74,7 @@ export function CreateInvoiceForm({
                   </p>
                 )}
                 <Button type="submit" disabled={mutation.isPending}>
-                  Create Invoice
+                  {t("create.submit")}
                 </Button>
               </Field>
             </FieldGroup>
