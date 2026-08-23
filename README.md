@@ -21,7 +21,7 @@ The repository contains a foundation, not a finished invoice workflow.
 | Invoices | Scaffold only | Entities and an initial migration exist. Create, list, detail, and download endpoints are not functional. |
 | PDF generation | Scaffold only | QuestPDF template code exists but is commented out and uses sample data. |
 | PDF storage | Scaffold only | Supabase upload code exists but is commented out and is not registered through dependency injection. |
-| Frontend | Prototype | Authentication screens and an authenticated shell exist. Invoice screens use incomplete forms and mock data. |
+| Frontend | Foundation | Authentication screens, a minimal dashboard, and an authenticated shell exist. Invoice screens remain incomplete and use mock data. |
 | Tests | Missing | Vitest is configured but has no tests. There is no backend test project. |
 
 See [Architecture](docs/ARCHITECTURE.md) for the current and target designs and
