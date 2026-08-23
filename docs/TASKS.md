@@ -33,7 +33,6 @@ ticket.
 | P1 | Supabase construction and PDF code are commented prototypes inside feature code. | `INVOICE-003`, `INVOICE-004` |
 | P1 | Startup automatically applies migrations and there is no repeatable design-time migration path. | `DATA-001` |
 | P1 | There are no backend tests and Vitest contains no test files. | `FND-004`, `QA-001` |
-| P2 | Starter/demo screens, duplicate router setup, mock dashboard data, and mixed aliases obscure the app. | `FND-002` |
 | P2 | The frontend build reports a dashboard chunk larger than 500 kB. | Post-MVP performance review |
 
 ## Foundation
@@ -67,7 +66,7 @@ ticket.
 
 ### FND-002 — Remove starter and duplicate application code
 
-**Status:** Ready
+**Status:** Done
 **Purpose:** Leave one obvious router/session/API structure and remove template behavior that is not
 part of Invoice Generator.
 **Expected area:** router bootstrap, unused auth hooks/API functions, demo routes/data, placeholder
@@ -99,7 +98,7 @@ landing/dashboard copy.
 
 ### FND-003 — Make Aspire the local frontend entrypoint
 
-**Status:** Blocked by `FND-002`.
+**Status:** Ready
 **Purpose:** Start PostgreSQL, API, and Vite through the AppHost and use relative `/api` calls.
 **Expected area:** AppHost project/resource graph and Vite dev-server configuration.
 **Estimated size:** 100–250 lines plus lock/package metadata.
@@ -517,7 +516,7 @@ test.
 
 ### I18N-001 — Establish English locale resources
 
-**Status:** Blocked by `FND-002`. Can run before invoice frontend tickets.
+**Status:** Ready. Can run before invoice frontend tickets.
 **Purpose:** Prevent new screens from spreading hardcoded copy while still shipping English only.
 **Expected area:** localization bootstrap, English resources, existing app-owned screens.
 **Estimated size:** 200–400 lines plus lockfile.

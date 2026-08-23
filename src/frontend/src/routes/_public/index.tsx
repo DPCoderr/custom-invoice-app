@@ -8,11 +8,11 @@ export const Route = createFileRoute("/_public/")({
 
 function Home() {
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-bold">Welcome to TanStack Start</h1>
-      <p className="mt-4 text-lg">
-        Edit <code>src/routes/index.tsx</code> to get started.
+    <main className="mx-auto flex max-w-2xl flex-col items-center gap-4 px-6 py-24 text-center">
+      <h1 className="text-4xl font-bold">Invoice Generator</h1>
+      <p className="text-lg text-muted-foreground">
+        A focused learning app for creating reusable services and invoices.
       </p>
-    </div>
+    </main>
   );
 }

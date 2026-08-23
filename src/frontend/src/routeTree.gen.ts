@@ -9,22 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as PostsRouteImport } from './routes/posts'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicSignupRouteImport } from './routes/_public/signup'
 import { Route as PublicLoginRouteImport } from './routes/_public/login'
-import { Route as PublicContactRouteImport } from './routes/_public/contact'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedInvoicesIndexRouteImport } from './routes/_authenticated/invoices/index'
 import { Route as AuthenticatedInvoicesCreateRouteImport } from './routes/_authenticated/invoices/create'
 
-const PostsRoute = PostsRouteImport.update({
-  id: '/posts',
-  path: '/posts',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
   getParentRoute: () => rootRouteImport,
@@ -48,11 +41,6 @@ const PublicLoginRoute = PublicLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => PublicRoute,
 } as any)
-const PublicContactRoute = PublicContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => PublicRoute,
-} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -73,9 +61,7 @@ const AuthenticatedInvoicesCreateRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
-  '/posts': typeof PostsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
-  '/contact': typeof PublicContactRoute
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
   '/invoices/create': typeof AuthenticatedInvoicesCreateRoute
@@ -83,9 +69,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof PublicIndexRoute
-  '/posts': typeof PostsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
-  '/contact': typeof PublicContactRoute
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
   '/invoices/create': typeof AuthenticatedInvoicesCreateRoute
@@ -95,9 +79,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
-  '/posts': typeof PostsRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
-  '/_public/contact': typeof PublicContactRoute
   '/_public/login': typeof PublicLoginRoute
   '/_public/signup': typeof PublicSignupRoute
   '/_public/': typeof PublicIndexRoute
@@ -108,30 +90,19 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/posts'
     | '/dashboard'
-    | '/contact'
     | '/login'
     | '/signup'
     | '/invoices/create'
     | '/invoices/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/posts'
-    | '/dashboard'
-    | '/contact'
-    | '/login'
-    | '/signup'
-    | '/invoices/create'
-    | '/invoices'
+    '/' | '/dashboard' | '/login' | '/signup' | '/invoices/create' | '/invoices'
   id:
     | '__root__'
     | '/_authenticated'
     | '/_public'
-    | '/posts'
     | '/_authenticated/dashboard'
-    | '/_public/contact'
     | '/_public/login'
     | '/_public/signup'
     | '/_public/'
@@ -142,18 +113,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
-  PostsRoute: typeof PostsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/posts': {
-      id: '/posts'
-      path: '/posts'
-      fullPath: '/posts'
-      preLoaderRoute: typeof PostsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_public': {
       id: '/_public'
       path: ''
@@ -187,13 +150,6 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof PublicLoginRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/contact': {
-      id: '/_public/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof PublicContactRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_authenticated/dashboard': {
@@ -237,14 +193,12 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 )
 
 interface PublicRouteChildren {
-  PublicContactRoute: typeof PublicContactRoute
   PublicLoginRoute: typeof PublicLoginRoute
   PublicSignupRoute: typeof PublicSignupRoute
   PublicIndexRoute: typeof PublicIndexRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
-  PublicContactRoute: PublicContactRoute,
   PublicLoginRoute: PublicLoginRoute,
   PublicSignupRoute: PublicSignupRoute,
   PublicIndexRoute: PublicIndexRoute,
@@ -256,7 +210,6 @@ const PublicRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,
-  PostsRoute: PostsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
