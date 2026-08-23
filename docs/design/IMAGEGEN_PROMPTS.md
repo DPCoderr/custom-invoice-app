@@ -93,6 +93,58 @@ Constraints: preserve phone dimensions, header Log in, hero sizing, Create accou
 Avoid: a second CTA, any preview button, the phrase Invoice preview, a large rounded application card, VAT, tax, discounts, customer-management module, status/payment UI, recurring invoices, email delivery, Dutch, storage URLs or keys, gradients, bright branding, bottom tabs.
 ```
 
+## Public landing hero mobile — professional invoice edit
+
+```text
+Use case: precise-object-edit
+Asset type: professional invoice-document preview inside a mobile landing-page hero
+Input images: Image 1 is the result-section mobile hero.
+Primary request: preserve the entire phone, hero, single Create account action, benefits, gray section, and caption. Edit only the white invoice paper so it is cleaner, more polished, and professional while matching the neutral shadcn/Inter visual language.
+Document treatment: narrow white paper at 82-84% of the phone content width, 4-6px radius, hairline border, generous margins, and refined soft paper shadow.
+Layout: top row with generic document mark and "Pixel & Paper Studio" left and uppercase "INVOICE" right; metadata "INV-2026-3654B204" and "Aug 23, 2026"; label "BILL TO" and bold "Example Customer B.V."; a light-neutral table header with "DESCRIPTION" and "AMOUNT"; rows "Website development" / "€850.00" and "Architecture review" / "€250.00"; then a strong rule or pale summary band with bold "Total" / "€1,100.00".
+Sizing: document labels at least 28 source pixels; headings and total 32-38 source pixels; aligned tabular numbers; every visible row complete and readable.
+Constraints: edit only the invoice paper and content; no button or control; preserve exactly one dark page action; English only; exact values; no clipping, malformed text, overlap, horizontal overflow, extra logo, brand color, or watermark.
+Avoid: application-card header, large rounded card, preview CTA, VAT, tax, discounts, invoice status, payment terms/workflow, bank details, QR code, customer-management module, Dutch, storage URLs or keys, gradients, bright colors, fake logos.
+```
+
+## Public landing hero mobile — invoice readability edit
+
+```text
+Use case: precise-object-edit
+Asset type: accessible professional invoice-document preview in mobile landing hero
+Input images: Image 1 is the professional invoice-paper hero.
+Primary request: preserve the complete page, professional document structure, exact text, and single-CTA hierarchy while increasing only the invoice paper and typography for 390px-class readability.
+Scale: enlarge the paper to 88% of the content width while retaining gray space, paper corners, border, and shadow. Seller 34-36 source pixels; INVOICE 40-42; invoice number/date 30-32; BILL TO and table headers 28-30; customer 34-36; rows 32-34; total 38-40; icon 44-48. Use compact 20-28 source-pixel spacing rather than shrinking text.
+Constraints: amounts remain right-aligned; every row and total band is visible above the home indicator; change nothing outside the invoice paper except a small upward reposition; exact copy and values; one dark page action; no clipping, overlap, horizontal overflow, malformed text, tiny metadata, or watermark.
+Avoid: new content, preview button, application-card styling, VAT, tax, discounts, status/payment UI, bank details, QR code, customer-management module, Dutch, storage URLs or keys, gradients, bright colors, fake logos.
+```
+
+## Public landing hero mobile — simplified readable invoice edit
+
+```text
+Use case: precise-object-edit
+Asset type: highly readable professional invoice-document preview in mobile landing hero
+Input images: Image 1 is the invoice-readability hero.
+Primary request: preserve the full header, hero, Create account action, and benefits. Simplify and enlarge only the invoice-document area for genuine 390px-class readability.
+Composition: remove the result caption and internal document icon. Move the paper upward, enlarge it to 92-94% of the phone content width, and retain a thin border, subtle shadow, and near-square corners.
+Layout and scale: header "Pixel & Paper Studio" 44-48 source pixels and "INVOICE" 56-60; metadata number/date 40-44; compact bill-to label 36-40 plus customer 44-48; table headers 36-40; rows 42-46; total 48-52. Use 16-20 source-pixel gaps and 24-28 source-pixel paper padding.
+Constraints: exact English copy and values; all rows and total visible above the home indicator; only one dark page CTA; no caption, internal icon, preview button, clipping, overlap, malformed text, horizontal overflow, or watermark.
+Avoid: small metadata, app-card controls, VAT, tax, discounts, status/payment UI, bank details, QR code, customer-management module, Dutch, storage URLs or keys, gradients, bright colors, fake logos.
+```
+
+## Public landing hero mobile — minimal invoice edit
+
+```text
+Use case: precise-object-edit
+Asset type: minimal professional invoice-document preview in mobile landing hero
+Input images: Image 1 is the readable professional invoice hero.
+Primary request: preserve the page outside the invoice paper. Remove the date, standalone BILL TO label, and DESCRIPTION/AMOUNT table header so the document can use large mobile-readable typography.
+Document content: header "Pixel & Paper Studio" and "INVOICE"; number "INV-2026-3654B204"; one customer row "Bill to · Example Customer B.V."; rows "Website development" / "€850.00" and "Architecture review" / "€250.00"; then a top rule and pale total band "Total" / "€1,100.00".
+Scale: paper 92-94% of content width; seller 52-56 source pixels; INVOICE 64-70; number 44-48; customer 52-56; rows 50-54; total 58-62. Use 24-32 source-pixel row gaps, right-aligned amounts, thin separators, subtle border/shadow, and near-square corners.
+Constraints: exact copy and amounts; no other metadata/label; every rendered glyph at least 28 source pixels and body at least 31; all content above home indicator; one dark page CTA; no clipping, overlap, malformed text, horizontal overflow, or watermark.
+Avoid: date, standalone BILL TO, table headers, tiny text, preview button, app controls, VAT, tax, discounts, status/payment UI, bank details, QR code, customer-management module, Dutch, storage URLs or keys, gradients, bright colors, fake logos.
+```
+
 ## Profile and services prerequisites — desktop
 
 ```text
