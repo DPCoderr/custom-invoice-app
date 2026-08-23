@@ -21,7 +21,7 @@ The repository contains a foundation, not a finished invoice workflow.
 | Invoices | Scaffold only | Entities and an initial migration exist. Create, list, detail, and download endpoints are not functional. |
 | PDF generation | Scaffold only | QuestPDF template code exists but is commented out and uses sample data. |
 | PDF storage | Scaffold only | Supabase upload code exists but is commented out and is not registered through dependency injection. |
-| Frontend | Foundation | Authentication screens, a minimal dashboard, an authenticated shell, and fixed English locale resources exist. Invoice screens remain incomplete and use mock data. |
+| Frontend | Foundation | A responsive public landing hero, authentication screens, a minimal dashboard, an authenticated shell, and fixed English locale resources exist. Invoice screens remain incomplete and use mock data. |
 | Tests | Partial | Focused frontend localization tests exist. There is no backend test project. |
 
 See [Architecture](docs/ARCHITECTURE.md) for the current and target designs and

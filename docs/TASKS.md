@@ -541,6 +541,31 @@ test.
 **Tests/checks:** localization initialization test, representative component test, lint/build.
 **Non-goals:** Dutch, runtime language selection, backend/PDF language contract.
 
+### FE-000 — Build the public landing hero
+
+**Status:** Done. The responsive public hero and product-preview composition were added in `FE-000`.
+**Purpose:** Replace placeholder home copy with a clear, accessible entrypoint into registration.
+**Prerequisites:** `FND-002`, `I18N-001`.
+**Expected area:** public navbar, home feature, English resources, and focused component test.
+**Estimated size:** 250–450 lines.
+
+**Implementation**
+
+- Build distinct desktop and mobile compositions from the approved design references.
+- Keep one primary mobile account action while retaining login in the public header.
+- Present the invoice example as semantic, non-interactive product evidence.
+- Keep all user-facing copy in semantic English resources.
+
+**Acceptance criteria**
+
+- The public home route has a responsive hero, registration/login navigation, benefits, and invoice preview.
+- Mobile controls meet touch-target expectations without horizontal overflow.
+- The preview contains no backend calls, storage details, VAT, status, or payment behavior.
+- Representative tests, lint, typecheck, and build pass.
+
+**Tests/checks:** focused Testing Library test, `npm run test`, lint, typecheck, build.
+**Non-goals:** backend integration, authenticated invoice screens, analytics, testimonials, deployment.
+
 ### FE-001 — Add business profile and service UI
 
 **Status:** Blocked by `PROFILE-001`, `SERVICE-001`, `FND-004`, and `I18N-001`.
