@@ -119,30 +119,17 @@ Constraints: amounts remain right-aligned; every row and total band is visible a
 Avoid: new content, preview button, application-card styling, VAT, tax, discounts, status/payment UI, bank details, QR code, customer-management module, Dutch, storage URLs or keys, gradients, bright colors, fake logos.
 ```
 
-## Public landing hero mobile — simplified readable invoice edit
+## Public landing hero — desktop invoice parity edit
 
 ```text
 Use case: precise-object-edit
-Asset type: highly readable professional invoice-document preview in mobile landing hero
-Input images: Image 1 is the invoice-readability hero.
-Primary request: preserve the full header, hero, Create account action, and benefits. Simplify and enlarge only the invoice-document area for genuine 390px-class readability.
-Composition: remove the result caption and internal document icon. Move the paper upward, enlarge it to 92-94% of the phone content width, and retain a thin border, subtle shadow, and near-square corners.
-Layout and scale: header "Pixel & Paper Studio" 44-48 source pixels and "INVOICE" 56-60; metadata number/date 40-44; compact bill-to label 36-40 plus customer 44-48; table headers 36-40; rows 42-46; total 48-52. Use 16-20 source-pixel gaps and 24-28 source-pixel paper padding.
-Constraints: exact English copy and values; all rows and total visible above the home indicator; only one dark page CTA; no caption, internal icon, preview button, clipping, overlap, malformed text, horizontal overflow, or watermark.
-Avoid: small metadata, app-card controls, VAT, tax, discounts, status/payment UI, bank details, QR code, customer-management module, Dutch, storage URLs or keys, gradients, bright colors, fake logos.
-```
-
-## Public landing hero mobile — minimal invoice edit
-
-```text
-Use case: precise-object-edit
-Asset type: minimal professional invoice-document preview in mobile landing hero
-Input images: Image 1 is the readable professional invoice hero.
-Primary request: preserve the page outside the invoice paper. Remove the date, standalone BILL TO label, and DESCRIPTION/AMOUNT table header so the document can use large mobile-readable typography.
-Document content: header "Pixel & Paper Studio" and "INVOICE"; number "INV-2026-3654B204"; one customer row "Bill to · Example Customer B.V."; rows "Website development" / "€850.00" and "Architecture review" / "€250.00"; then a top rule and pale total band "Total" / "€1,100.00".
-Scale: paper 92-94% of content width; seller 52-56 source pixels; INVOICE 64-70; number 44-48; customer 52-56; rows 50-54; total 58-62. Use 24-32 source-pixel row gaps, right-aligned amounts, thin separators, subtle border/shadow, and near-square corners.
-Constraints: exact copy and amounts; no other metadata/label; every rendered glyph at least 28 source pixels and body at least 31; all content above home indicator; one dark page CTA; no clipping, overlap, malformed text, horizontal overflow, or watermark.
-Avoid: date, standalone BILL TO, table headers, tiny text, preview button, app controls, VAT, tax, discounts, status/payment UI, bank details, QR code, customer-management module, Dutch, storage URLs or keys, gradients, bright colors, fake logos.
+Asset type: desktop public landing-page hero reference mockup
+Input images: Image 1 is the desktop hero edit target; the selected mobile direction is a professional invoice paper inside a light-gray result area.
+Primary request: preserve the complete desktop header, left hero, actions, benefits, and lower value section. Replace only the right-side overlapping prerequisite/create-form cards with one professional invoice result presentation matching mobile.
+Composition: a light-neutral-gray stage with caption "A clean invoice, ready to download." and a large white paper at 86-90% width, near-square corners, thin border, document margins, and soft shadow.
+Document: header icon plus "Pixel & Paper Studio" and "INVOICE"; metadata "INV-2026-3654B204" and "Aug 23, 2026"; "BILL TO" and "Example Customer B.V."; a light table header "DESCRIPTION" / "AMOUNT"; rows "Website development" / "€850.00" and "Architecture review" / "€250.00"; pale summary "Total" / "€1,100.00".
+Constraints: right side is output evidence, not a form or CTA; exact English text and amounts; neutral shadcn/Inter system; change nothing else; no clipping, malformed text, tiny invoice copy, or watermark.
+Avoid: preview button, app-card controls, prerequisite card, VAT, tax, discounts, status/payment UI, recurring invoices, email delivery, bank details, QR code, customer-management module, Dutch, storage URLs or keys, gradients, bright branding, fake logos.
 ```
 
 ## Profile and services prerequisites — desktop

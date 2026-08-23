@@ -81,8 +81,8 @@ The implementation may keep them as separate routes while reusing the same compl
 
 | Asset | Intent | Visual QA |
 | --- | --- | --- |
-| `landing-hero-desktop.png` | Public desktop landing hero | Account/login actions, focused MVP promise, readable create-invoice preview, and restrained value summary use the existing neutral visual system. |
-| `landing-hero-mobile.png` | Public mobile landing hero | One focused account CTA owns conversion; a quiet result area contains a large, minimal invoice document with readable number, customer, line summaries, and total—without microtext or a second action. |
+| `landing-hero-desktop.png` | Public desktop landing hero | Account/login actions and focused MVP promise sit beside the same professional invoice-paper result presentation used on mobile. |
+| `landing-hero-mobile.png` | Public mobile landing hero | One focused account CTA owns conversion; the user-selected invoice paper retains seller, date, bill-to, table headers, line items, and a restrained total band without a second action. |
 | `profile-services-prerequisites-desktop.png` | Profile plus reusable-service prerequisites | Every required seller value is populated consistently with the completed check; service rows are read-only and expose no overflow/edit/delete action. |
 | `invoice-create-desktop.png` | Complete desktop create form with two editable lines | Two-line layout, dates, EUR preview, server-authority helper, and actions are clear. |
 | `invoice-list-states-desktop.png` | Populated and empty list states | Both states share one navigation hierarchy; row focus and named download actions are visible; no status column exists. |
@@ -98,9 +98,9 @@ The invoice-list asset intentionally presents two design states on one reference
 All seven PNGs were generated with the built-in ImageGen tool. The landing hero has separate desktop
 and mobile compositions rather than one scaled layout. Targeted edits removed a redundant mobile
 login action, brought interactive elements to an accessible scale, and separated the mobile product
-evidence into a quiet result area without a second CTA. The final invoice-paper edits added
-professional document hierarchy and increased its mobile reading scale while retaining the same
-restrained visual system. Other targeted edits replaced a
+evidence into a quiet result area without a second CTA. The user-selected professional invoice-paper
+direction—with metadata, bill-to hierarchy, table, and total—now appears consistently on mobile and
+desktop. Other targeted edits replaced a
 brand-like PDF symbol, corrected completed profile/service state, and replaced the rejected
 full-page mobile capture with a standard-height, task-focused viewport using accessible sizing.
 No CLI/API fallback or production UI code was used. The exact committed-asset prompt set is in
