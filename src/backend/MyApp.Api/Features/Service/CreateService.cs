@@ -39,13 +39,17 @@ public class CreateService
         {
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .MaximumLength(100);
+                .WithMessage("Name is required.")
+                .MaximumLength(100)
+                .WithMessage("Name cannot exceed 100 characters.");
 
             RuleFor(x => x.Description)
-                .MaximumLength(250);
+                .MaximumLength(250)
+                .WithMessage("Description cannot exceed 250 characters.");
 
             RuleFor(x => x.DefaultUnitPrice)
-                .GreaterThanOrEqualTo(0);
+                .GreaterThanOrEqualTo(0)
+                .WithMessage("Default unit price must be zero or greater.");
         }
     }
 
