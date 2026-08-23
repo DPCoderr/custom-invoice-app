@@ -15,14 +15,14 @@ The repository contains a foundation, not a finished invoice workflow.
 
 | Area | Status | What exists today |
 | --- | --- | --- |
-| Authentication | Partial | Cookie authentication, register, login, logout, current-user, and Google endpoints exist. Error handling and deployment-safe cookie configuration still need work. |
+| Authentication | Partial | Cookie authentication and a shared frontend API/error client exist. Backend validation and deployment-safe cookie configuration still need work. |
 | Aspire orchestration | Local foundation | PostgreSQL, pgAdmin, the API, and Vite are registered. Production frontend hosting remains undecided. |
 | Services | Partial | The entity, migration, validation, and create endpoint exist. The route and response contract still need normalization; listing is missing. |
 | Invoices | Scaffold only | Entities and an initial migration exist. Create, list, detail, and download endpoints are not functional. |
 | PDF generation | Scaffold only | QuestPDF template code exists but is commented out and uses sample data. |
 | PDF storage | Scaffold only | Supabase upload code exists but is commented out and is not registered through dependency injection. |
 | Frontend | Foundation | Authentication screens, a minimal dashboard, and an authenticated shell exist. Invoice screens remain incomplete and use mock data. |
-| Tests | Missing | Vitest is configured but has no tests. There is no backend test project. |
+| Tests | Partial | Vitest covers the frontend API client and session-query failure behavior. There is no backend test project. |
 
 See [Architecture](docs/ARCHITECTURE.md) for the current and target designs and
 [Tasks](docs/TASKS.md) for the ordered implementation backlog.
@@ -122,7 +122,7 @@ Observed baseline on 2026-08-23:
 
 - the frontend production build passes with a large-chunk warning;
 - Biome lint passes with zero errors and warnings after `FND-001`;
-- Vitest exits with no test files found;
+- Vitest passes the focused API-client and session-query tests added by `FND-004`;
 - `ServiceDefaults` and `MyApp.Api` compile;
 - the full solution check is blocked in the Codex sandbox because the Aspire SDK resolver cannot
   read the host user's NuGet configuration.

@@ -6,10 +6,10 @@ import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-const config = defineConfig(({ command }) => {
+const config = defineConfig(({ command, mode }) => {
   const apiTarget = process.env.API_HTTP
 
-  if (command === 'serve' && !apiTarget) {
+  if (command === 'serve' && mode !== 'test' && !apiTarget) {
     throw new Error('API_HTTP is not configured. Start the app through Aspire.')
   }
 

@@ -14,8 +14,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { registerSchema, type RegisterSchemaType } from "./schema";
-import { register } from "#/lib/api/auth";
+import { register, toRegisterRequest } from "#/lib/api/auth";
 import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { projectAuthErrors } from "./api-errors";
 
 export function SignupForm({
   className,
@@ -36,12 +37,28 @@ export function SignupForm({
   });
 
   const mutation = useMutation({
-    mutationFn: register,
-    onSuccess: () => {
-      queryClient.removeQueries({ queryKey: userQueryOptions.queryKey });
-      navigate({ to: "/dashboard" });
+    mutationFn: (data: RegisterSchemaType) => register(toRegisterRequest(data)),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: userQueryOptions.queryKey,
+        refetchType: "none",
+      });
+      await queryClient.fetchQuery(userQueryOptions);
+      await navigate({ to: "/dashboard" });
     },
-    onError: (error) => form.setError("root", { message: error.message }),
+    onError: (error) => {
+      const result = projectAuthErrors(error, [
+        "firstName",
+        "lastName",
+        "email",
+        "password",
+      ]);
+      for (const field of ["firstName", "lastName", "email", "password"] as const) {
+        if (result.fields[field])
+          form.setError(field, { message: result.fields[field] });
+      }
+      if (result.root) form.setError("root", { message: result.root });
+    },
   });
 
   function onSubmit(data: RegisterSchemaType) {

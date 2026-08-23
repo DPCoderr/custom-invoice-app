@@ -25,14 +25,13 @@ ticket.
 | P0 | Invoice create, PDF storage, list, detail, and download are not functional. | `INVOICE-001` through `INVOICE-007` |
 | P0 | Frontend and backend invoice field names and shapes disagree. | `INVOICE-001`, `FE-002` |
 | P0 | User-owned reads do not yet have a proven, tested ownership pattern. | `FND-005`, `QA-001` |
-| P0 | Cookie settings, HTTP localhost, hardcoded origins, and Google redirects are inconsistent. | `FND-004`, `AUTH-001` |
+| P0 | Cookie settings, HTTP localhost, hardcoded invoice calls, and Google redirects are inconsistent. | `FE-002`, `AUTH-001` |
 | P1 | Feature endpoints map outside `/api` and use action/case-inconsistent paths. | `FND-005` |
 | P1 | `InvoiceNumber` is a `Guid`; decimal precision, lengths, and unique constraints are missing. | `DATA-001` |
 | P1 | Seller data has no source and historical seller snapshots do not exist. | `PROFILE-001` |
-| P1 | The frontend has duplicate user APIs, double response parsing, and hides network failures as logout. | `FND-004` |
 | P1 | Supabase construction and PDF code are commented prototypes inside feature code. | `INVOICE-003`, `INVOICE-004` |
 | P1 | Startup automatically applies migrations and there is no repeatable design-time migration path. | `DATA-001` |
-| P1 | There are no backend tests and Vitest contains no test files. | `FND-004`, `QA-001` |
+| P1 | There are no backend tests and frontend coverage is limited to foundation behavior. | `QA-001` |
 | P2 | The frontend build reports a dashboard chunk larger than 500 kB. | Post-MVP performance review |
 
 ## Foundation
@@ -128,7 +127,7 @@ landing/dashboard copy.
 
 ### FND-004 — Add one frontend API client and error model
 
-**Status:** Ready.
+**Status:** Done
 **Purpose:** Centralize request behavior and stop hiding server/network errors as authentication
 state.
 **Expected area:** `src/lib/api`, auth API adapters, current-user query, and focused Vitest files.

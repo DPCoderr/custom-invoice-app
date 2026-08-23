@@ -21,6 +21,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { login } from "#/lib/api/auth";
 import { loginSchema, type LoginSchemaType } from "./schema";
 import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { projectAuthErrors } from "./api-errors";
 
 export function LoginForm({
   className,
@@ -39,11 +40,22 @@ export function LoginForm({
 
   const mutation = useMutation({
     mutationFn: login,
-    onSuccess: () => {
-      queryClient.removeQueries({ queryKey: userQueryOptions.queryKey });
-      navigate({ to: "/dashboard" });
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: userQueryOptions.queryKey,
+        refetchType: "none",
+      });
+      await queryClient.fetchQuery(userQueryOptions);
+      await navigate({ to: "/dashboard" });
     },
-    onError: (error) => form.setError("root", { message: error.message }),
+    onError: (error) => {
+      const result = projectAuthErrors(error, ["email", "password"]);
+      if (result.fields.email)
+        form.setError("email", { message: result.fields.email });
+      if (result.fields.password)
+        form.setError("password", { message: result.fields.password });
+      if (result.root) form.setError("root", { message: result.root });
+    },
   });
 
   function onSubmit(data: LoginSchemaType) {
