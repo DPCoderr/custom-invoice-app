@@ -82,7 +82,7 @@ The implementation may keep them as separate routes while reusing the same compl
 | Asset | Intent | Visual QA |
 | --- | --- | --- |
 | `landing-hero-desktop.png` | Public desktop landing hero | Account/login actions, focused MVP promise, readable create-invoice preview, and restrained value summary use the existing neutral visual system. |
-| `landing-hero-mobile.png` | Public mobile landing hero | Header login plus one focused account CTA avoids duplication; 48-52px primary actions, wrapping benefit labels, and a readable invoice preview avoid desktop-scale compression. |
+| `landing-hero-mobile.png` | Public mobile landing hero | One focused account CTA owns conversion; a full-width gray result section and narrower invoice document provide product evidence without repeating the CTA/card pattern. |
 | `profile-services-prerequisites-desktop.png` | Profile plus reusable-service prerequisites | Every required seller value is populated consistently with the completed check; service rows are read-only and expose no overflow/edit/delete action. |
 | `invoice-create-desktop.png` | Complete desktop create form with two editable lines | Two-line layout, dates, EUR preview, server-authority helper, and actions are clear. |
 | `invoice-list-states-desktop.png` | Populated and empty list states | Both states share one navigation hierarchy; row focus and named download actions are visible; no status column exists. |
@@ -97,7 +97,8 @@ The invoice-list asset intentionally presents two design states on one reference
 
 All seven PNGs were generated with the built-in ImageGen tool. The landing hero has separate desktop
 and mobile compositions rather than one scaled layout. Targeted edits removed a redundant mobile
-login action and brought primary actions and preview labels to the documented accessible scale. Other targeted edits replaced a
+login action, brought interactive elements to an accessible scale, and separated the mobile product
+evidence into a quiet gray result section without a second CTA. Other targeted edits replaced a
 brand-like PDF symbol, corrected completed profile/service state, and replaced the rejected
 full-page mobile capture with a standard-height, task-focused viewport using accessible sizing.
 No CLI/API fallback or production UI code was used. The exact committed-asset prompt set is in

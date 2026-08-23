@@ -79,6 +79,20 @@ Constraints: preserve the header Log in, focused Create account action, all exac
 Avoid: a second hero Log in action, VAT, tax, discounts, customer-management module, status/payment UI, recurring invoices, email delivery, Dutch, storage URLs or keys, gradients, bright branding, bottom tabs.
 ```
 
+## Public landing hero mobile — result-section edit
+
+```text
+Use case: precise-object-edit
+Asset type: mobile public landing-page hero reference mockup
+Input images: Image 1 is the accessible mobile hero edit target.
+Primary request: preserve the complete header, eyebrow, headline, paragraph, focused Create account action, and three reassurance labels. Replace everything below the reassurance labels so the hero and product evidence no longer look like two repeated CTA cards.
+Composition: remove the bordered Invoice preview application card, document-icon tile, and its Create invoice button. There must be only one dark CTA on the page. Introduce a full-width very-light-neutral-gray result section with generous top padding and caption "A clean invoice, ready to download." Center a narrower white paper document, about 78-82% of the content width, with near-square corners and subtle paper shadow.
+Document content: uppercase "INVOICE", "Example Customer B.V.", rows "Website development" / "€850.00" and "Architecture review" / "€250.00", a thin rule, and bold "Total" / "€1,100.00". Use document-like margins and tabular alignment. No button, card header, icon tile, form control, or action inside the preview.
+Visual hierarchy: the white hero ends after the benefit checks; the gray full-width section creates a clear sectional change. The narrower document is secondary product evidence, not a second conversion block.
+Constraints: preserve phone dimensions, header Log in, hero sizing, Create account focus ring, benefit labels, neutral shadcn/Inter direction, English copy, exact values, and safe area. Every visible row is complete and readable; no overlap, horizontal overflow, malformed text, or watermark.
+Avoid: a second CTA, any preview button, the phrase Invoice preview, a large rounded application card, VAT, tax, discounts, customer-management module, status/payment UI, recurring invoices, email delivery, Dutch, storage URLs or keys, gradients, bright branding, bottom tabs.
+```
+
 ## Profile and services prerequisites — desktop
 
 ```text
