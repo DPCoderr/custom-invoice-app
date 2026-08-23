@@ -10,6 +10,75 @@
 
 The prompts below are the final prompts used for the committed assets.
 
+## Public landing hero — desktop
+
+```text
+Use case: ui-mockup
+Asset type: desktop public landing-page hero reference mockup
+Primary request: create a high-fidelity, implementation-realistic desktop hero page for the learning-focused Invoice Generator SaaS app. It should feel polished, calm, trustworthy, and achievable with the existing React, Tailwind, shadcn/ui base-vega, Lucide, and Inter stack.
+Scene/backdrop: full 1440px-class desktop browser viewport, bright white canvas with very subtle neutral-gray section separation; no browser chrome.
+Header: centered max-width navigation, 72px high. Left: generic outline document icon and exact product name "Invoice Generator". Right: quiet action "Log in" and dark primary action "Create account", both 44-48px high.
+Hero composition: spacious two-column layout. Left uses eyebrow "Simple invoicing for independent work", 56-64px headline "Create clear invoices without the clutter.", and paragraph "Set up your business profile, reuse services, and generate downloadable PDF invoices in one focused workflow." Add 48px actions "Create account" and "Log in", then three check labels: "Reusable services", "Server-calculated totals", and "Secure PDF download".
+Product preview: right column contains a large readable "Create invoice" UI card with "Example Customer B.V.", line summaries "Website development" / "8.5 × €100.00" / "€850.00" and "Architecture review" / "2 × €125.00" / "€250.00", "Total" / "€1,100.00", and "Create invoice". A subtle background card may show "Invoice prerequisites", "Business profile complete", and "Service added".
+Lower edge: begin a three-column value section with "Set up once", "Reuse services", and "Download PDFs" plus one short supporting line each.
+Style: realistic shippable shadcn/ui base-vega web UI with Lucide line icons; neutral white, charcoal, and gray palette; Inter-like type; subtle borders, 10-12px radii, restrained shadows, and one visible CTA focus ring.
+Constraints: English only; accessible contrast; readable product preview; one coherent desktop viewport; no watermark.
+Avoid: VAT, tax, discounts, customer-management module, invoice status or payment workflows, recurring invoices, email delivery, bank details, analytics, testimonials, fake logos, Dutch, storage URLs or keys, gradients, glassmorphism, bright branding, tiny preview text, exaggerated claims.
+```
+
+## Public landing hero — mobile
+
+```text
+Use case: ui-mockup
+Asset type: mobile public landing-page hero reference mockup
+Primary request: create a high-fidelity, genuinely mobile-first hero page for the same learning-focused Invoice Generator app. Do not shrink the desktop mockup; use a clear single-column hierarchy for a normal 390px-class phone viewport.
+Scene/backdrop: one centered standard-height phone viewport on a plain white presentation background; white responsive web page inside.
+Header: 64px high with at least 16px padding. Left shows a generic document icon and "Invoice Generator" in readable 18px-class type; right shows a 44-48px "Log in" action.
+Hero: small eyebrow "Simple invoicing for independent work"; wrapping-friendly 38-42px headline "Create clear invoices without the clutter."; readable paragraph "Set up your business profile, reuse services, and generate downloadable PDF invoices in one focused workflow." Add full-width 52px actions "Create account" and "Log in", then check labels "Reusable services", "Server-calculated totals", and "Secure PDF download", wrapping rather than shrinking.
+Product preview: below the actions, show a readable mobile card "Invoice preview" with "Example Customer B.V.", "Website development — €850.00", "Architecture review — €250.00", "Total — €1,100.00", and a 48px action "Create invoice". Natural continuation below the fold is allowed; no sticky overlap.
+Style: realistic shippable mobile shadcn/ui base-vega UI, neutral white/charcoal/gray palette, Inter-like type, thin borders, restrained green checks, 16px side padding, 16-20px card padding, and 12-16px gaps.
+Constraints: English only; standard-height viewport; body at least 17-18px visually; support labels at least 14px; controls 48-52px; accessible contrast; no horizontal scrolling, tiny copy, overlap, edge-cramped actions, or watermark.
+Avoid: desktop two-column layout, tiny product screenshot, VAT, tax, discounts, customer-management module, invoice status or payment workflows, recurring invoices, email delivery, bank details, testimonials, fake logos, Dutch, storage URLs or keys, gradients, glassmorphism, bright branding, bottom tabs, exaggerated claims.
+```
+
+## Public landing hero mobile — accessibility sizing edit
+
+```text
+Use case: precise-object-edit
+Asset type: accessible mobile public landing-page hero reference mockup
+Input images: Image 1 is the first mobile hero and visual-system reference.
+Primary request: preserve the content, English copy, phone width, single-column hierarchy, and neutral styling while correcting proportional accessibility sizing for a screen approximately 760 source pixels wide representing a 390px CSS viewport at about 1.95x scale.
+Sizing: make the header Log in target 88-96 source pixels high; both hero actions 100-104 source pixels high; reassurance labels at least 28-30 source pixels with 40-44 source-pixel check icons; invoice-preview heading 36 source pixels; customer and line text 28-32 source pixels; total 32-36 source pixels; and preview Create invoice action 96-104 source pixels high. Keep at least 32 source pixels side padding and 24-32 source pixels between actions.
+Composition: reflow vertically and reduce only decorative empty space. Natural continuation below the fold is allowed, but every visible element must be complete. Keep a standard-height phone rather than a full-page capture.
+Constraints: preserve all exact strings, visible focus ring, neutral shadcn appearance, document icon, and readable invoice data; no overlap, clipping, horizontal overflow, tiny copy, or watermark.
+Avoid: new features, VAT, tax, discounts, customer-management module, status/payment UI, recurring invoices, email delivery, Dutch, storage URLs or keys, gradients, bright branding, bottom tabs.
+```
+
+## Public landing hero mobile — final preview sizing edit
+
+```text
+Use case: precise-object-edit
+Asset type: accessible mobile public landing-page hero reference mockup
+Input images: Image 1 is the accessibility-edited mobile hero.
+Primary request: preserve the header, hero, both primary actions, exact copy, phone size, focus ring, and neutral hierarchy while enlarging only the reassurance labels and invoice-preview card.
+Sizing: reassurance-label glyphs 34-36 source pixels with 44-48 source-pixel check icons; Invoice preview heading 40 source pixels; customer 34-36; line descriptions and amounts 32-34; total 36-38; Create invoice action 104 source pixels high with 34-36 source-pixel text.
+Composition: make room only by reducing decorative blank space above the reassurance rows, before the preview, and inside the card. Retain at least 24 source pixels between readable rows and 32 source pixels side padding. Keep the complete preview and action above the safe area.
+Constraints: exact English strings and values unchanged; no clipping, overlap, horizontal overflow, malformed text, tiny copy, or watermark.
+Avoid: new content, VAT, tax, discounts, customer-management module, status/payment UI, recurring invoices, email delivery, Dutch, storage URLs or keys, gradients, bright branding, bottom tabs.
+```
+
+## Public landing hero mobile — final CTA hierarchy edit
+
+```text
+Use case: precise-object-edit
+Asset type: accessible mobile public landing-page hero reference mockup
+Input images: Image 1 is the preview-sizing mobile hero.
+Primary request: remove only the redundant full-width hero Log in button because Log in remains clearly available in the header. Move the reassurance list and invoice preview upward, then use the freed space for unambiguously readable preview typography and controls.
+Sizing: Invoice preview heading 40 source pixels; customer 36; line descriptions and amounts 34; total 38; bottom Create invoice action 104 source pixels high with 36 source-pixel text. Maintain at least 32 source pixels between rows and at least 32 source pixels side padding.
+Constraints: preserve the header Log in, focused Create account action, all exact hero and invoice copy, phone dimensions, neutral shadcn styling, safe area, and home indicator. Keep the complete preview and action visible with no clipping, overlap, horizontal overflow, malformed text, new content, or watermark.
+Avoid: a second hero Log in action, VAT, tax, discounts, customer-management module, status/payment UI, recurring invoices, email delivery, Dutch, storage URLs or keys, gradients, bright branding, bottom tabs.
+```
+
 ## Profile and services prerequisites — desktop
 
 ```text
