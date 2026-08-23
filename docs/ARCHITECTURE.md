@@ -28,14 +28,16 @@ flowchart LR
     AppHost --> DB
     AppHost --> PG
     API --> DB
-    Browser -. hardcoded localhost:5050 .-> API
+    AppHost --> Browser
+    Browser -->|Vite /api proxy| API
     API -. commented prototype .-> Storage
 ```
 
-Aspire currently owns PostgreSQL, pgAdmin, and the API. The frontend resource in `AppHost.cs` is
-commented out, so contributors must start Vite separately. Authentication endpoints and the
-Identity store exist. The invoice endpoint, QuestPDF renderer, and Supabase upload path are not
-functional.
+Aspire currently owns PostgreSQL, pgAdmin, the API, and the Vite development server. Vite proxies
+relative `/api` requests to the Aspire-provided API endpoint. This is a local-development boundary;
+the resource serving built frontend assets in production is not yet decided. Authentication
+endpoints and the Identity store exist. The invoice endpoint, QuestPDF renderer, and Supabase
+upload path are not functional.
 
 ## Target learning-MVP architecture
 
@@ -290,7 +292,7 @@ exists. Signed URLs are short-lived and are generated only after the API ownersh
 | Current implementation | Target MVP |
 | --- | --- |
 | Feature endpoints map outside the `/api` group | All application endpoints map below `/api` |
-| Hardcoded frontend API origin | Relative `/api` through Aspire/Vite proxy |
+| Relative `/api` through the local Vite proxy; production host unresolved | A production host that preserves the same-origin `/api` boundary |
 | `InvoiceNumber` is a `Guid` | Separate `Guid` ID and readable string number |
 | No business profile or seller snapshot | One profile per user and immutable seller snapshots |
 | Unbounded text and unconstrained `numeric` columns | Explicit lengths, indexes, and decimal precision |

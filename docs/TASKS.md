@@ -25,7 +25,7 @@ ticket.
 | P0 | Invoice create, PDF storage, list, detail, and download are not functional. | `INVOICE-001` through `INVOICE-007` |
 | P0 | Frontend and backend invoice field names and shapes disagree. | `INVOICE-001`, `FE-002` |
 | P0 | User-owned reads do not yet have a proven, tested ownership pattern. | `FND-005`, `QA-001` |
-| P0 | Cookie settings, HTTP localhost, hardcoded origins, and Google redirects are inconsistent. | `FND-003`, `AUTH-001` |
+| P0 | Cookie settings, HTTP localhost, hardcoded origins, and Google redirects are inconsistent. | `FND-004`, `AUTH-001` |
 | P1 | Feature endpoints map outside `/api` and use action/case-inconsistent paths. | `FND-005` |
 | P1 | `InvoiceNumber` is a `Guid`; decimal precision, lengths, and unique constraints are missing. | `DATA-001` |
 | P1 | Seller data has no source and historical seller snapshots do not exist. | `PROFILE-001` |
@@ -98,7 +98,7 @@ landing/dashboard copy.
 
 ### FND-003 — Make Aspire the local frontend entrypoint
 
-**Status:** Ready
+**Status:** Done
 **Purpose:** Start PostgreSQL, API, and Vite through the AppHost and use relative `/api` calls.
 **Expected area:** AppHost project/resource graph and Vite dev-server configuration.
 **Estimated size:** 100–250 lines plus lock/package metadata.
@@ -128,7 +128,7 @@ landing/dashboard copy.
 
 ### FND-004 — Add one frontend API client and error model
 
-**Status:** Blocked by `FND-003`.
+**Status:** Ready.
 **Purpose:** Centralize request behavior and stop hiding server/network errors as authentication
 state.
 **Expected area:** `src/lib/api`, auth API adapters, current-user query, and focused Vitest files.

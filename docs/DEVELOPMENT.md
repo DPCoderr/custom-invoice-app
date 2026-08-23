@@ -73,13 +73,15 @@ Current resource names are:
 
 - `postgres` for the PostgreSQL server;
 - `appdb` for the application database;
-- `webapi` for `MyApp.Api`.
+- `webapi` for `MyApp.Api`;
+- `frontend` for the Vite development server.
 
 The Aspire dashboard is the source of truth for allocated endpoints, health, logs, and traces.
 For agent-driven work:
 
 ```powershell
 aspire wait webapi
+aspire wait frontend
 aspire describe
 aspire logs webapi
 ```
@@ -87,17 +89,12 @@ aspire logs webapi
 Do not manually poll health URLs. Do not restart the complete AppHost when a resource command or
 framework watch process is sufficient.
 
-### Current frontend limitation
+### Frontend development boundary
 
-The frontend is not yet an Aspire resource. In a second terminal:
-
-```powershell
-cd src/frontend
-npm run dev
-```
-
-It currently uses hardcoded `http://localhost:5050` requests. `FND-003` and `FND-004` replace this
-with an Aspire-managed Vite resource, dev proxy, and relative `/api` requests.
+Open the `frontend` endpoint reported by Aspire. The Vite development server proxies relative
+`/api` requests to `webapi`; the current-user request uses this path as the integration proof.
+`FND-004` migrates the remaining hardcoded calls while adding the shared request/error model.
+Production hosting for the built frontend assets remains unresolved.
 
 ## Database and migrations
 

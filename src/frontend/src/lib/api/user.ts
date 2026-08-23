@@ -7,7 +7,7 @@ export type UserDto = {
 
 export async function getUser(): Promise<UserDto | null> {
   try {
-    const res = await fetch("http://localhost:5050/api/auth/me", {
+    const res = await fetch("/api/auth/me", {
       credentials: "include",
     });
 
