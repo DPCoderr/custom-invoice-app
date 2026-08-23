@@ -31,7 +31,7 @@ export async function login(data: LoginSchemaType): Promise<void> {
       console.log("res", res);
       throw new Error(body?.message ?? "Something went wrong");
     }
-  } catch (error) {
+  } catch {
     throw new Error("Failed to connect with the backend. Try it later again.");
   }
 }
@@ -50,7 +50,7 @@ export async function register(data: RegisterSchemaType): Promise<void> {
       const body = await res.json().catch(() => null);
       throw new Error(body?.message ?? "Something went wrong");
     }
-  } catch (error) {
+  } catch {
     throw new Error("Failed to connect with the backend. Try it later again.");
   }
 }
@@ -70,7 +70,7 @@ export async function logout(): Promise<void> {
       throw new Error(body?.message ?? "Something went wrong");
     }
 
-  } catch (error) {
+  } catch {
     throw new Error("Failed to connect with the backend. Try it later again.");
   }
 }
@@ -83,7 +83,7 @@ export async function getUser(): Promise<MeResponseDto> {
       credentials: "include",
       method: "GET",
     });
-  } catch (error) {
+  } catch {
     throw new Error("Failed to connect with the backend. Try it later again.");
   }
 

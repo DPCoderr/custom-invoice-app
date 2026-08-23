@@ -3,9 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Field, FieldGroup } from "@/components/ui/field";
 import { FormInput } from "#/components/form/form-input";
@@ -15,20 +12,17 @@ import { createInvoiceSchema, type CreateInvoiceType } from "../schema";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { createInvoice } from "./mutation";
-import { useState } from "react";
 import { FormDatePicker } from "#/components/form/form-date-picker";
 
 export function CreateInvoiceForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const [issueDate, setIssueDate] = useState<Date | undefined>(new Date());
-  const [dueDate, setDueDate] = useState<Date | undefined>(new Date());
   const form = useForm({
     defaultValues: {
       clientName: "",
-      issueDate: issueDate,
-      dueDate: dueDate,
+      issueDate: new Date(),
+      dueDate: new Date(),
       notes: "",
     },
     resolver: zodResolver(createInvoiceSchema),

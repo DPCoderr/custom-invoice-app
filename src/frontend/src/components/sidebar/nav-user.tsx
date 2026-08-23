@@ -1,4 +1,3 @@
-import { useLogout } from "#/features/auth/mutations";
 import { logout } from "#/lib/api/auth";
 import type { UserDto } from "#/lib/api/user";
 import { userQueryOptions } from "#/lib/queries/user-query-options";

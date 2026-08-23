@@ -128,7 +128,7 @@ npm run test
 Observed baseline on 2026-08-23:
 
 - the frontend production build passes with a large-chunk warning;
-- Biome lint fails with 24 errors and 26 warnings;
+- Biome lint passes with zero errors and warnings after `FND-001`;
 - Vitest exits with no test files found;
 - `ServiceDefaults` and `MyApp.Api` compile;
 - the full solution check is blocked in the Codex sandbox because the Aspire SDK resolver cannot

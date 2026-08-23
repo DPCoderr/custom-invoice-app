@@ -1,6 +1,7 @@
 "use client"
 
-import * as React from "react"
+import type * as React from "react"
+import { Link } from "@tanstack/react-router"
 
 import {
   SidebarGroup,
@@ -16,7 +17,7 @@ export function NavSecondary({
 }: {
   items: {
     title: string
-    url: string
+    url: string | null
     icon: React.ReactNode
   }[]
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
@@ -26,7 +27,14 @@ export function NavSecondary({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton render={<a href={item.url} />}>
+              <SidebarMenuButton
+                disabled={!item.url}
+                render={
+                  item.url ? (
+                    <Link to={item.url} aria-label={item.title} />
+                  ) : undefined
+                }
+              >
                 {item.icon}
                 <span>{item.title}</span>
               </SidebarMenuButton>
