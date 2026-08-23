@@ -85,19 +85,16 @@ Avoid: invoice status, badges such as paid/draft/overdue/sent, payment actions, 
 ## Invoice creation — mobile
 
 ```text
-Use case: ui-mockup
+Use case: precise-object-edit
 Asset type: mobile web application reference mockup
-Primary request: create a high-fidelity, implementation-realistic mobile responsive "Create invoice" screen for the learning-focused Invoice Generator app, showing how the same documented multi-line invoice form adapts to a narrow phone without becoming a desktop form shrunk down.
-Scene/backdrop: one centered modern phone viewport on a plain white presentation background; inside the phone use a white application canvas.
-Subject: top app bar with hamburger menu button, generic document icon, compact product title "Invoice Generator", and a small circular account avatar. Page title "Create invoice" with supporting text "Enter customer details and add at least one invoice line." Stack collapsible-looking but open shadcn-style sections. "Invoice details" card has full-width labeled date controls "Issue date" value "Aug 23, 2026", "Due date" value "Sep 6, 2026", and read-only "Currency" value "EUR". "Customer" card shows "Customer name" value "Example Customer B.V.", "Customer email (optional)" value "finance@example.test", and a multiline "Customer address" value "Main Street 10, 1234 AB Amsterdam, NL". "Invoice lines" shows two clearly separated vertical line cards with headers "Line 1" and "Line 2". Each line has full-width "Service" select, "Description", then a two-column row "Unit price" and "Quantity", a right-aligned line preview. Line 1 values "Website development", "Website development", "100.00", "8.5", "€850.00"; Line 2 values "Consulting", "Architecture review", "125.00", "2", "€250.00". Each line has a labeled small outline action "Remove line"; below is full-width outline "Add line". Sticky bottom summary bar reads "Total preview" and "€1,100.00" with dark full-width button "Create invoice". Include short helper "Final total calculated by the server."
-Style/medium: realistic shippable responsive React web product UI matching shadcn/ui base-vega Input, Select, Card, Button and Lucide line icons; not concept art and not a native iOS design.
-Composition/framing: portrait mobile screenshot, approximate 390px-class viewport, vertically scrollable page captured as a tall full-page reference, 16px outer padding, single-column hierarchy, 12px gaps, 10px card radius, thin neutral borders, readable controls, no horizontal scrolling.
-Lighting/mood: bright, calm, focused.
-Color palette: existing neutral shadcn light theme only—white, near-black, neutral gray, muted gray, charcoal primary button.
-Text (verbatim): "Invoice Generator", "Create invoice", "Enter customer details and add at least one invoice line.", "Invoice details", "Issue date", "Aug 23, 2026", "Due date", "Sep 6, 2026", "Currency", "EUR", "Customer", "Customer name", "Example Customer B.V.", "Customer email (optional)", "finance@example.test", "Customer address", "Main Street 10, 1234 AB Amsterdam, NL", "Invoice lines", "Line 1", "Service", "Website development", "Description", "Unit price", "100.00", "Quantity", "8.5", "€850.00", "Remove line", "Line 2", "Consulting", "Architecture review", "125.00", "2", "€250.00", "Add line", "Total preview", "€1,100.00", "Final total calculated by the server."
-Typography: Inter-like sans serif throughout, minimum practical mobile readability.
-Constraints: English only; 44px minimum touch targets; labels visually associated; visible keyboard focus ring on the first service select; sticky footer does not obscure form content; preserve at least one line; practical responsive stacking; no watermark; one coherent mobile web screen.
-Avoid: VAT, tax, discounts, customer selector or customer module, invoice status, draft/sent/paid/overdue, payments, bank details, Dutch, private storage keys, public or signed URLs, bottom-tab navigation, desktop sidebar, tiny text, clipped controls, horizontal scrolling, gradients, glassmorphism, bright brand colors.
+Input images: Image 1 is the rejected first revision and visual-system reference.
+Primary request: correct the proportional accessibility sizing. The phone interior is approximately 786 source pixels wide and represents a 390px CSS viewport at roughly 2x scale. Every input, select, and button must therefore be visibly 96-104 source pixels high, representing 48-52 CSS pixels. Labels must be about 28-32 source pixels high, input values about 32 source pixels high, and icons 40-48 source pixels.
+Composition: show a standard-height mobile viewport farther down the scroll position. Keep the 56px-class app bar with a large hamburger target, generic document icon, "Invoice Generator", and avatar. Earlier page sections are above the viewport; start visible content with expanded heading "Invoice lines" and a generous "Line 1" card. Do not shrink controls to show earlier content.
+Line card: use full-width, 96-104 source-pixel-high controls for "Service" / "Website development", "Description" / "Website development", "Unit price" / "100.00", and "Quantity" / "8.5". Do not place fields side by side. Show "€850.00" and a full-width 96-104 source-pixel-high "Remove line 1" button. Below, leave at least 32 source pixels of whitespace and add a full-width 96-104 source-pixel-high "Add line" button.
+Footer: leave at least 32 source pixels between Add line and a non-overlapping sticky footer. Show "Total preview", "€850.00", helper "Final total calculated by the server.", and a full-width dark 104 source-pixel-high "Create invoice" button with device safe-area clearance.
+Spacing and style: use 32 source-pixel horizontal page padding, 32-40 source-pixel card padding, 24-32 source-pixel gaps, Inter-like typography, neutral shadcn colors, thin borders, and 10-12px radii. Keep a visible blue focus ring on Service.
+Constraints: all interactive targets, including hamburger, fields, Remove line 1, Add line, and Create invoice, meet the explicit source-pixel height; English only; no clipping, overlap, horizontal overflow, tiny helper copy, or edge-cramped action. This is visual direction, not a contract.
+Avoid: miniature controls, compressed full-page capture, collapsed rows in this viewport, two-column mobile inputs, VAT, tax, discounts, customer module or selector, invoice status, payment workflow, Dutch, public storage URLs, private keys, bottom tabs, gradients, bright branding, watermark.
 ```
 
 ## Invoice detail — final icon edit
@@ -124,30 +121,4 @@ Input images: Image 1: edit target, the existing Invoice Generator business-prof
 Primary request: make exactly two scoped corrections. First, populate every required seller field so the green "Business profile complete" prerequisite is truthful: "Business name" = "Pixel & Paper Studio", "Email" = "alex@example.test", "Address line 1" = "Canal Street 12", leave only "Address line 2 (optional)" empty, "Postal code" = "1012 AB", "City" = "Amsterdam", and "Country" = "Netherlands". Second, remove the three-dot overflow/ellipsis action at the far right of each existing service row and use the freed space as clean table whitespace; services are list-only in this MVP.
 Constraints: change only the field values and removal of the two service-row ellipsis actions. Preserve the full browser crop, URL bar, sidebar, active navigation, avatar, all headings and English labels, green prerequisite checkmarks, form structure, service creation controls, two existing service rows and values, colors, Inter-like typography, focus ring, spacing, borders, and shadows. Keep "Save profile" and "Add service" unchanged. No other new action or field. No watermark.
 Avoid: edit or delete service actions, kebab menus, overflow icons, VAT, tax, discounts, customer module, status/payment UI, Dutch text, storage URLs, private keys, new branding or logos.
-```
-
-## Invoice creation mobile — notes edit
-
-This targeted edit produced the committed mobile PNG from its initial generation.
-
-```text
-Use case: precise-object-edit
-Asset type: mobile web application reference mockup
-Input images: Image 1: edit target, the existing Invoice Generator mobile create-invoice UI mockup
-Primary request: add one visible, full-width multiline control labeled "Notes (optional)" with the value "Thank you for your business." inside the "Customer" card, directly below the existing "Customer address" control and before the "Invoice lines" card.
-Constraints: preserve the complete phone frame, responsive single-column layout, all existing English copy and values, invoice detail fields, customer fields, both line-item cards and their controls/values, focus ring, add/remove actions, sticky total preview, server-authority helper, and "Create invoice" action. Reflow vertically as needed so the new notes textarea is fully visible, nothing overlaps the sticky total, no content is clipped, and there is no horizontal scrolling. Maintain 16px-class page padding, readable Inter-like typography, 44px touch targets, neutral shadcn base-vega styling, thin borders, spacing rhythm, and white background. Change nothing else. No watermark.
-Avoid: horizontal overflow, clipped form controls, tiny text, VAT, tax, discounts, customer selector/module, invoice status, payment workflow, Dutch, storage URLs, private keys, desktop sidebar, bottom-tab navigation, gradients or bright colors.
-```
-
-## Invoice creation mobile — footer-clearance edit
-
-This final vertical outpaint produced the committed mobile PNG from the content-correct notes asset.
-
-```text
-Use case: precise-object-edit
-Asset type: mobile web application reference mockup
-Input images: Image 1: edit target, the original content-correct Invoice Generator mobile create-invoice UI mockup
-Primary request: perform a vertical canvas/phone-viewport extension only. Preserve the entire existing form and every pixel of its UI content through the complete "Add line" button. Extend the phone viewport and surrounding canvas downward by enough neutral space, approximately 72–96px, then move only the sticky "Total preview" / "Create invoice" footer and phone home indicator into that newly extended bottom area. The complete 44px Add line button, including its exact plus icon, exact "Add line" label, full bottom border, and 12–16px of whitespace below it, must be fully visible above the sticky footer.
-Constraints: do not re-render, retype, compress, remove, replace, or reflow any form field or action above the footer. Preserve exact original English text and values, Notes (optional), both invoice lines, both exact "Remove line" buttons, exact "Add line" button, focus ring, colors, widths, spacing, and typography. Preserve phone width and no horizontal scrolling. Only add vertical bottom canvas/phone space and reposition the sticky footer/home indicator downward. No clipping, overlap, malformed text, missing controls, or watermark.
-Avoid: modifying any label or value, deleting actions, shrinking controls, footer overlap, horizontal overflow, VAT, discounts, status/payment UI, Dutch, storage URLs, new colors or branding.
 ```

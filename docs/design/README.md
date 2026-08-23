@@ -52,8 +52,10 @@ The implementation may keep them as separate routes while reusing the same compl
   sticky summary and a two-column invoice-detail layout with a narrow PDF card.
 - **Tablet (768-1023 px):** collapse the sidebar to the sheet, keep form sections full width, and
   move summary/PDF cards below the primary content when space is tight.
-- **Mobile (below 768 px):** use 16 px page padding, a single column, at least 44 px touch targets,
-  vertical line-item cards, and a bottom summary action that never obscures form content.
+- **Mobile (below 768 px):** use 16 px page padding, 16 px input text, 48-52 px controls,
+  full-width fields and actions, and a bottom summary that respects the device safe area. Do not
+  shrink a full desktop-length form into one screen: earlier sections scroll out of view while the
+  active section receives normal viewport space.
 - Tables may become stacked summary rows on small screens. Preserve invoice number, customer,
   dates, total, detail navigation, and an explicitly named PDF action.
 - Never shrink desktop controls until labels or values become unreadable; reflow before reducing
@@ -80,7 +82,7 @@ The implementation may keep them as separate routes while reusing the same compl
 | `invoice-create-desktop.png` | Complete desktop create form with two editable lines | Two-line layout, dates, EUR preview, server-authority helper, and actions are clear. |
 | `invoice-list-states-desktop.png` | Populated and empty list states | Both states share one navigation hierarchy; row focus and named download actions are visible; no status column exists. |
 | `invoice-detail-desktop.png` | Read-only snapshots and PDF download | Seller/customer snapshots, line totals, PDF metadata, and focus-visible download action are legible; no storage URL/key is shown. |
-| `invoice-create-mobile.png` | Narrow-screen create-form reflow | Customer notes, both line cards, and actions remain visible without horizontal scrolling; the complete 44px `Add line` button, bottom border, and clear gap sit above the sticky total/action footer. |
+| `invoice-create-mobile.png` | Usable narrow-screen create-form viewport | The mid-scroll reference gives active fields 16px text and 48-52px targets; `Add line` is full width with clear spacing above a non-overlapping safe-area footer. |
 
 Visual QA was performed at original generated resolution. These bitmap references are not pixel
 specifications, and generated copy should be checked against locale resources during implementation.
@@ -88,8 +90,8 @@ The invoice-list asset intentionally presents two design states on one reference
 
 ## Generation record
 
-All five PNGs were generated with the built-in ImageGen tool in `ui-mockup` mode, one initial call
-per distinct asset. Built-in targeted edits replaced a brand-like PDF symbol, corrected completed
-profile/service state, and added mobile notes without changing the overall visual system. No CLI/API
-fallback or production UI code was used. A final vertical outpaint removed the mobile footer overlap
-without changing form content. The exact committed-asset prompt set is in `IMAGEGEN_PROMPTS.md`.
+All five PNGs were generated with the built-in ImageGen tool. Built-in targeted edits replaced a
+brand-like PDF symbol, corrected completed profile/service state, and replaced the rejected
+full-page mobile capture with a standard-height, task-focused viewport using accessible sizing.
+No CLI/API fallback or production UI code was used. The exact committed-asset prompt set is in
+`IMAGEGEN_PROMPTS.md`.
