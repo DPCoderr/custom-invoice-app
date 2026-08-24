@@ -71,8 +71,9 @@ dotnet user-secrets set "Supabase:SupabaseKey" "<server-side-key>" --project src
 ```
 
 For the Google web OAuth client, register `http://localhost:5050/signin-google` as an authorized
-redirect URI. The AppHost keeps this API endpoint stable while supplying the allocated Vite URL to
-the API for the final browser redirect.
+redirect URI. The AppHost keeps the API at `http://localhost:5050` and Vite at
+`http://localhost:3000`. In production, configure `Frontend__BaseUrl` with the deployed frontend
+origin, such as `https://app.example.com`.
 
 The Supabase key is server-side only. Never expose it through a `VITE_*` variable or commit it
 to an appsettings file.
@@ -86,11 +87,11 @@ cd src/AppHost
 aspire start
 ```
 
-Use the Aspire dashboard to discover the allocated frontend, API, PostgreSQL, and pgAdmin endpoints.
+Use the Aspire dashboard to inspect the frontend, API, PostgreSQL, and pgAdmin resources.
 When an agent operates the application, it must use `aspire wait <resource>` before accessing a
 resource rather than polling a URL.
 
-Open the frontend endpoint reported by Aspire. During local development, Vite proxies relative
+Open `http://localhost:3000`. During local development, Vite proxies relative
 `/api` requests to the Aspire-provided `webapi` endpoint. Production frontend hosting remains a
 separate, unresolved decision.
 

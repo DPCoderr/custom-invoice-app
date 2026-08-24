@@ -12,11 +12,10 @@ var api = builder.AddProject<Projects.MyApp_Api>("webapi")
     .WaitFor(database);
 
 var frontend = builder.AddViteApp("frontend", "../frontend")
+    .WithEndpoint("http", endpoint => endpoint.Port = 3000)
     .WithReference(api)
     .WithEnvironment("API_HTTP", api.GetEndpoint("http"))
     .WithExternalHttpEndpoints()
     .WaitFor(api);
-
-api.WithEnvironment("Frontend__BaseUrl", frontend.GetEndpoint("http"));
 
 builder.Build().Run();
