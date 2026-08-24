@@ -14,8 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { registerSchema, type RegisterSchemaType } from "./schema";
-import { register, toRegisterRequest } from "#/lib/api/auth";
-import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { refreshCurrentUser, register, toRegisterRequest } from "./api";
 import { projectAuthErrors } from "./api-errors";
 
 export function SignupForm({
@@ -39,11 +38,7 @@ export function SignupForm({
   const mutation = useMutation({
     mutationFn: (data: RegisterSchemaType) => register(toRegisterRequest(data)),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: userQueryOptions.queryKey,
-        refetchType: "none",
-      });
-      await queryClient.fetchQuery(userQueryOptions);
+      await refreshCurrentUser(queryClient);
       await navigate({ to: "/dashboard" });
     },
     onError: (error) => {

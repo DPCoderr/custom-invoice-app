@@ -1,12 +1,12 @@
 import { AppSidebar } from "#/components/sidebar/app-sidebar";
 import { SiteHeader } from "#/components/site-header";
 import { SidebarInset, SidebarProvider } from "#/components/ui/sidebar";
-import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { currentUserQuery } from "#/features/auth/api";
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_authenticated")({
   beforeLoad: async ({ context, location }) => {
-    const user = await context.queryClient.ensureQueryData(userQueryOptions);
+    const user = await context.queryClient.ensureQueryData(currentUserQuery);
 
     if (!user) {
       throw redirect({ to: "/login", search: { redirect: location.href } });

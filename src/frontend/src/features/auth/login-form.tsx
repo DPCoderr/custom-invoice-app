@@ -18,9 +18,8 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { login } from "#/lib/api/auth";
+import { login, refreshCurrentUser } from "./api";
 import { loginSchema, type LoginSchemaType } from "./schema";
-import { userQueryOptions } from "#/lib/queries/user-query-options";
 import { projectAuthErrors } from "./api-errors";
 
 export function LoginForm({
@@ -41,11 +40,7 @@ export function LoginForm({
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: userQueryOptions.queryKey,
-        refetchType: "none",
-      });
-      await queryClient.fetchQuery(userQueryOptions);
+      await refreshCurrentUser(queryClient);
       await navigate({ to: "/dashboard" });
     },
     onError: (error) => {
@@ -81,7 +76,7 @@ export function LoginForm({
                   variant="outline"
                   type="button"
                   render={
-                    <a href={"http://localhost:5050/api/auth/google"}>
+                    <a href="/api/auth/google?returnUrl=%2Fdashboard">
                       <svg
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"

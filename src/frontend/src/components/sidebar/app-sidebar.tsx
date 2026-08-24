@@ -16,7 +16,7 @@ import {
   FolderIcon,
   LayoutDashboardIcon,
 } from "lucide-react";
-import type { UserDto } from "#/lib/api/user";
+import type { UserDto } from "#/features/auth/api";
 import { Link } from "@tanstack/react-router";
 
 const data = {

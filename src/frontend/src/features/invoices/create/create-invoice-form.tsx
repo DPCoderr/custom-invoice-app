@@ -11,7 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createInvoiceSchema, type CreateInvoiceType } from "../schema";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { createInvoice } from "./mutation";
+import { createInvoice } from "./api";
 import { FormDatePicker } from "#/components/form/form-date-picker";
 
 export function CreateInvoiceForm({

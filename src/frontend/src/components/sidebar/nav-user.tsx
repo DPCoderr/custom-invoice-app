@@ -1,6 +1,4 @@
-import { logout } from "#/lib/api/auth";
-import type { UserDto } from "#/lib/api/user";
-import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { currentUserQuery, logout, type UserDto } from "#/features/auth/api";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -28,7 +26,7 @@ export function NavUser({ user }: { user: UserDto }) {
   const mutation = useMutation({
     mutationFn: logout,
     onSuccess: () => {
-      queryClient.setQueryData(userQueryOptions.queryKey, null);
+      queryClient.setQueryData(currentUserQuery.queryKey, null);
       navigate({ to: "/login" });
     },
   });

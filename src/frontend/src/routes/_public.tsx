@@ -1,10 +1,10 @@
 import { Navbar } from "#/components/navbar";
-import { userQueryOptions } from "#/lib/queries/user-query-options";
+import { currentUserQuery } from "#/features/auth/api";
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_public")({
   beforeLoad: async ({ context }) => {
-    const user = await context.queryClient.ensureQueryData(userQueryOptions);
+    const user = await context.queryClient.ensureQueryData(currentUserQuery);
     if (user) {
       throw redirect({ to: "/dashboard" });
     }
@@ -20,4 +20,3 @@ function RootComponent() {
     </>
   );
 }
-
