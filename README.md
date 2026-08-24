@@ -70,6 +70,10 @@ dotnet user-secrets set "Supabase:SupabaseUrl" "<project-url>" --project src/bac
 dotnet user-secrets set "Supabase:SupabaseKey" "<server-side-key>" --project src/backend/MyApp.Api/MyApp.Api.csproj
 ```
 
+For the Google web OAuth client, register `http://localhost:5050/signin-google` as an authorized
+redirect URI. The AppHost keeps this API endpoint stable while supplying the allocated Vite URL to
+the API for the final browser redirect.
+
 The Supabase key is server-side only. Never expose it through a `VITE_*` variable or commit it
 to an appsettings file.
 

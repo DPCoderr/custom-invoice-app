@@ -33,6 +33,7 @@ builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
     {
         options.ClientId = builder.Configuration["Google:ClientId"]!;
         options.ClientSecret = builder.Configuration["Google:ClientSecret"]!;
+        options.SignInScheme = IdentityConstants.ExternalScheme;
     })
     .AddIdentityCookies();
 
