@@ -43,7 +43,7 @@ function Posts() {
   return (
     <>
       <h1>Hi</h1>
-      { posts && posts.map((post) => (
+      {posts?.map((post) => (
         <p key={post.id}>{post.title}</p>
       ))}
     </>

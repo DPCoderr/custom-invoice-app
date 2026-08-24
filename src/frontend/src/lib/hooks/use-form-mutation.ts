@@ -8,7 +8,7 @@ export function useFormMutation<
   TSchema extends z.ZodType<FieldValues, FieldValues>,
   TData = unknown,
 >(options: FormMutationOptions<TSchema, TData>) {
-  const form = useForm<z.input<TSchema>, any, z.output<TSchema>>({
+  const form = useForm<z.input<TSchema>, unknown, z.output<TSchema>>({
     resolver: zodResolver(options.schema),
     defaultValues: options.defaultValues,
   });

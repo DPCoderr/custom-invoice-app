@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 
 import { NavDocuments } from "#/components/sidebar/nav-documents";
 import { NavMain } from "#/components/sidebar/nav-main";
@@ -15,8 +15,6 @@ import {
 } from "@/components/ui/sidebar";
 import {
   LayoutDashboardIcon,
-  ListIcon,
-  ChartBarIcon,
   FolderIcon,
   UsersIcon,
   CameraIcon,
@@ -30,6 +28,7 @@ import {
   CommandIcon,
 } from "lucide-react";
 import type { UserDto } from "#/lib/api/user";
+import { Link } from "@tanstack/react-router";
 
 const data = {
   user: {
@@ -40,7 +39,7 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: <LayoutDashboardIcon />,
     },
     {
@@ -50,7 +49,7 @@ const data = {
     },
     {
       title: "Clients",
-      url: "#",
+      url: null,
       icon: <UsersIcon />,
     },
   ],
@@ -59,45 +58,45 @@ const data = {
       title: "Capture",
       icon: <CameraIcon />,
       isActive: true,
-      url: "#",
+      url: null,
       items: [
         {
           title: "Active Proposals",
-          url: "#",
+          url: null,
         },
         {
           title: "Archived",
-          url: "#",
+          url: null,
         },
       ],
     },
     {
       title: "Proposal",
       icon: <FileTextIcon />,
-      url: "#",
+      url: null,
       items: [
         {
           title: "Active Proposals",
-          url: "#",
+          url: null,
         },
         {
           title: "Archived",
-          url: "#",
+          url: null,
         },
       ],
     },
     {
       title: "Prompts",
       icon: <FileTextIcon />,
-      url: "#",
+      url: null,
       items: [
         {
           title: "Active Proposals",
-          url: "#",
+          url: null,
         },
         {
           title: "Archived",
-          url: "#",
+          url: null,
         },
       ],
     },
@@ -105,34 +104,34 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: null,
       icon: <Settings2Icon />,
     },
     {
       title: "Get Help",
-      url: "#",
+      url: null,
       icon: <CircleHelpIcon />,
     },
     {
       title: "Search",
-      url: "#",
+      url: null,
       icon: <SearchIcon />,
     },
   ],
   documents: [
     {
       name: "Data Library",
-      url: "#",
+      url: null,
       icon: <DatabaseIcon />,
     },
     {
       name: "Reports",
-      url: "#",
+      url: null,
       icon: <FileChartColumnIcon />,
     },
     {
       name: "Word Assistant",
-      url: "#",
+      url: null,
       icon: <FileIcon />,
     },
   ],
@@ -145,7 +144,7 @@ export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sideb
           <SidebarMenuItem>
             <SidebarMenuButton
               className="data-[slot=sidebar-menu-button]:p-1.5!"
-              render={<a href="#" />}
+              render={<Link to="/" aria-label="Home" />}
             >
               <CommandIcon className="size-5!" />
               <span className="text-base font-semibold">Acme Inc.</span>

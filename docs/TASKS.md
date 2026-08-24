@@ -33,7 +33,6 @@ ticket.
 | P1 | Supabase construction and PDF code are commented prototypes inside feature code. | `INVOICE-003`, `INVOICE-004` |
 | P1 | Startup automatically applies migrations and there is no repeatable design-time migration path. | `DATA-001` |
 | P1 | There are no backend tests and Vitest contains no test files. | `FND-004`, `QA-001` |
-| P2 | Biome reports schema mismatch, accessibility failures, unused code, and formatting drift. | `FND-001` |
 | P2 | Starter/demo screens, duplicate router setup, mock dashboard data, and mixed aliases obscure the app. | `FND-002` |
 | P2 | The frontend build reports a dashboard chunk larger than 500 kB. | Post-MVP performance review |
 
@@ -41,7 +40,7 @@ ticket.
 
 ### FND-001 — Establish a clean frontend quality baseline
 
-**Status:** Ready
+**Status:** Done
 **Purpose:** Make lint output trustworthy before feature work adds more diagnostics.
 **Prerequisites:** None.
 **Expected area:** `biome.json` and existing frontend files named by Biome.
@@ -68,7 +67,7 @@ ticket.
 
 ### FND-002 — Remove starter and duplicate application code
 
-**Status:** Blocked by `FND-001`.
+**Status:** Ready
 **Purpose:** Leave one obvious router/session/API structure and remove template behavior that is not
 part of Invoice Generator.
 **Expected area:** router bootstrap, unused auth hooks/API functions, demo routes/data, placeholder

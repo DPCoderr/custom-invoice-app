@@ -16,6 +16,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { Link } from "@tanstack/react-router"
 import { MoreHorizontalIcon, FolderIcon, ShareIcon, Trash2Icon } from "lucide-react"
 
 export function NavDocuments({
@@ -23,7 +24,7 @@ export function NavDocuments({
 }: {
   items: {
     name: string
-    url: string
+    url: string | null
     icon: React.ReactNode
   }[]
 }) {
@@ -34,7 +35,14 @@ export function NavDocuments({
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton render={<a href={item.url} />}>
+            <SidebarMenuButton
+              disabled={!item.url}
+              render={
+                item.url ? (
+                  <Link to={item.url} aria-label={item.name} />
+                ) : undefined
+              }
+            >
               {item.icon}
               <span>{item.name}</span>
             </SidebarMenuButton>
