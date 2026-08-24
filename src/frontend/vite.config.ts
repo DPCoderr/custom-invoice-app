@@ -6,14 +6,32 @@ import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-const config = defineConfig({
-  resolve: { tsconfigPaths: true },
-  plugins: [
-    devtools(),
-    tailwindcss(),
-    tanstackRouter({ target: 'react', autoCodeSplitting: true }),
-    viteReact(),
-  ],
+const config = defineConfig(({ command, mode }) => {
+  const apiTarget = process.env.API_HTTP
+
+  if (command === 'serve' && mode !== 'test' && !apiTarget) {
+    throw new Error('API_HTTP is not configured. Start the app through Aspire.')
+  }
+
+  return {
+    resolve: { tsconfigPaths: true },
+    server: {
+      proxy: apiTarget
+        ? {
+            '/api': {
+              target: apiTarget,
+              changeOrigin: true,
+            },
+          }
+        : undefined,
+    },
+    plugins: [
+      devtools(),
+      tailwindcss(),
+      tanstackRouter({ target: 'react', autoCodeSplitting: true }),
+      viteReact(),
+    ],
+  }
 })
 
 export default config

@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-
-import data from "../../lib/api/data.json";
-import { SectionCards } from "#/features/dashboard/section-cards";
-import { DataTable } from "#/features/dashboard/data-table";
-import { ChartAreaInteractive } from "#/features/dashboard/chart-area-interactive";
+import { PageWrapper } from "#/components/layout/page-wrapper";
+import { SectionWrapper } from "#/components/layout/section-wrapper";
+import { Button } from "#/components/ui/button";
+import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   component: RouteComponent,
@@ -11,16 +10,17 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
 
 function RouteComponent() {
   return (
-    <div className="flex flex-1 flex-col">
-      <div className="@container/main flex flex-1 flex-col gap-2">
-        <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-          <SectionCards />
-          <div className="px-4 lg:px-6">
-            <ChartAreaInteractive />
-          </div>
-          <DataTable data={data} />
-        </div>
-      </div>
-    </div>
+    <PageWrapper>
+      <SectionWrapper className="space-y-4">
+        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <p className="text-muted-foreground">
+          Use the invoice workspace while the remaining MVP features are built.
+        </p>
+        <Button
+          nativeButton={false}
+          render={<Link to="/invoices">View invoices</Link>}
+        />
+      </SectionWrapper>
+    </PageWrapper>
   );
 }

@@ -1,3 +1,5 @@
+import { ApiError, apiRequest } from "./client";
+
 export type UserDto = {
   firstName: string;
   lastName: string;
@@ -5,19 +7,11 @@ export type UserDto = {
   roles: string[];
 };
 
-export async function getUser(): Promise<UserDto | null> {
+export async function getUser(signal?: AbortSignal): Promise<UserDto | null> {
   try {
-    const res = await fetch("http://localhost:5050/api/auth/me", {
-      credentials: "include",
-    });
-
-    if (res.status === 401) return null;
-    if (!res.ok) throw new Error("Failed to fetch user");
-
-    const data = await res.json();
-    return data;
+    return await apiRequest<UserDto>("/api/auth/me", { signal });
   } catch (error) {
-    console.warn("Fetch didn't work", error);
-    return null;
+    if (error instanceof ApiError && error.status === 401) return null;
+    throw error;
   }
 }
