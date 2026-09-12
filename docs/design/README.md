@@ -4,6 +4,12 @@ These mockups are implementation references for the learning MVP. They illustrat
 responsive behavior, and component composition; the contracts in `docs/REQUIREMENTS.md` remain
 the source of truth.
 
+These existing assets retain their prior design history; they are not a complete approval of the
+expanded frontend-first release. [Pages](../PAGES.md) now adds dashboard, customers, and service
+editing/archiving. Where the original scope below differs, follow that page specification and
+the [handoff/approval workflow](../FRONTEND-WORKFLOW.md). Complete missing viewport/state designs
+and obtain page-specific approval before implementation; keep these original assets intact.
+
 ## Product direction
 
 - Keep the interface quiet, practical, and document-focused. Use the existing Inter variable font,

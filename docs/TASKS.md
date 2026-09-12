@@ -5,6 +5,7 @@
 Work from top to bottom unless a ticket explicitly says it can run independently. Complete one
 ticket per reviewable change. A ticket is complete only when its acceptance criteria and checks
 pass; writing code is not completion by itself.
+The frontend-first stream queues below explicitly allow two page chats in parallel, one ticket per chat.
 
 Size estimates count human-reviewed source lines. Generated migrations, lockfiles, and generated
 TanStack route trees are excluded from the estimate but must still be inspected.
@@ -17,6 +18,53 @@ Status values:
 
 All tickets below start as `Ready` or `Blocked`. Update status in the same change that completes a
 ticket.
+
+## Frontend-first track
+
+This track can proceed against HTTP mocks without waiting for backend endpoints. It does not
+complete the original backend-dependent FE or QA tickets below. Follow [Pages](PAGES.md) and
+the [frontend workflow](FRONTEND-WORKFLOW.md); preserve the original backend learning sequence.
+
+### DOC-FE-001 — Specify pages and design-to-implementation handoffs
+
+**Status:** Done (2026-09-12; documentation only).
+**Purpose:** Give Sol-medium and Luna-max a shared, detailed page contract before page work starts.
+**Expected area:** documentation and agent instructions only; target <=500 reviewed changed lines.
+**Acceptance:** all ten pages specify fields/actions/states/responsiveness/data/testing; the handoff
+requires exact copy, contracts, fixtures, component mapping, and recorded design approval; all
+forms require React Hook Form/Zod; README explains the product and mock/backend distinction.
+**Checks:** Markdown link resolution, consistency/scope review, `git diff --check`.
+**Evidence:** 37 relative Markdown links resolved; fences and ten page sections checked; new-file
+whitespace and normal-config Git diff checks passed. Only documentation/agent instructions changed.
+**Non-goals:** page implementation, image generation, task creation, backend edits, runtime startup.
+
+### DOC-FE-002 — Split page specifications into two resumable streams
+
+**Status:** Done (2026-09-12; documentation only).
+**Purpose:** Preserve all ten page specifications while enabling at most two owned page chats.
+**Expected area:** shared index, two stream checklists, workflow, README, and agent instructions.
+**Acceptance:** each page is fully specified exactly once; all checkboxes start unchecked; owner,
+branch/worktree, dependencies, approval/handoff links, evidence, commit, and next step are recorded.
+The next-chat rules prevent duplicate claims and require integration before marking a page Done.
+**Checks:** compare moved sections with the pre-edit text, validate page partition/checklists and
+dependency order, resolve Markdown links/anchors, review workflow consistency, `git diff --check`.
+**Evidence:** all ten moved descriptions and shared rules/contracts match the pre-edit text;
+64 relative links/anchors pass; stream order, unchecked Todo records, and acyclic dependencies
+verified; Git diff/new-file whitespace checks pass. No page chat or implementation was started.
+**Non-goals:** starting page chats, generating designs, implementing pages, or modifying backend code.
+
+### Next frontend tickets
+
+Before execution, expand only the next item into acceptance criteria and <=500-line tickets:
+contract types/JSON fixtures -> MSW mock startup/persistence/scenarios -> English resources
+(reuse I18N-001) -> shared query/form/error infrastructure and approved visual foundation ->
+[stream A](PAGES-A.md) and [stream B](PAGES-B.md) in parallel -> integrated frontend acceptance.
+Respect the dependency/ownership gates in the workflow; at most one page chat per stream.
+Each page uses one visible task and one branch, with
+Sol-medium design/brief preparation and Luna-max implementation after explicit design approval.
+Stream A owns the public layout; B owns the protected layout; shared edits integrate serially.
+Each ticket records
+`Frontend verified with mocks` independently from backend integration status.
 
 ## Current findings
 

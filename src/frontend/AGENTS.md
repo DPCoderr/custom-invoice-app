@@ -4,6 +4,11 @@ These instructions apply to `src/frontend` and extend the repository root `AGENT
 
 - Follow `../../docs/conventions/FRONTEND.md` and the active ticket in
   `../../docs/TASKS.md`.
+- For frontend-first delivery, read `../../docs/PAGES.md`, `../../docs/FRONTEND-WORKFLOW.md`,
+  the assigned `../../docs/PAGES-A.md` or `../../docs/PAGES-B.md`, and the page-specific handoff
+  before implementation. Respect the two-chat limit, ownership ledger, and dependency gates.
+  Update progress through the coordinator; a checkbox requires integration evidence. Sol-medium
+  supplies the complete functional/visual brief; Luna-max implements only after explicit user design approval.
 - Keep route files thin. Put schemas, contracts, API calls, query options, mutation hooks, and
   forms in their feature directory.
 - Use the shared API client and relative `/api` URLs once `FND-004` is complete. Do not introduce

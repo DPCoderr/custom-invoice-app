@@ -1,9 +1,21 @@
 # Invoice Generator
 
-Invoice Generator is a learning-focused full-stack web application for creating reusable
-services, turning those services into invoice lines, generating a PDF, and storing that PDF
-privately. The application is intentionally kept small so that its backend can be learned and
-built one vertical slice at a time.
+Invoice Generator helps an individual user reuse business, customer, and service details to
+create invoices, find earlier invoices, and download their PDFs. It reduces repetitive entry of
+addresses, descriptions, and prices while keeping existing invoice values unchanged when reusable
+details are edited.
+
+The current delivery plan is frontend first: finish the agreed responsive pages with realistic
+HTTP mocks, then let the project owner implement the .NET backend manually, one learning slice at
+a time. Customer management and service editing/archiving are planned frontend extensions to the
+original MVP. A verified mock flow is not proof of working backend persistence or PDF generation.
+
+See [Page specifications](docs/PAGES.md) for all ten pages and their behavior, and
+[Frontend delivery workflow](docs/FRONTEND-WORKFLOW.md) for design approval, per-page tasks/branches,
+Sol-medium to Luna-max handoffs, React Hook Form/Zod rules, and verification requirements.
+Page work is organized into at most two concurrent chats: [stream A](docs/PAGES-A.md) and
+[stream B](docs/PAGES-B.md). Each file contains complete page briefs and a progress checklist
+so a new chat can resume work or pick the next ready page after shared prerequisites are complete.
 
 > [!IMPORTANT]
 > This project is an educational MVP. It is not yet suitable for real invoicing and does not

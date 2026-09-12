@@ -190,6 +190,8 @@ guards do not read stale session state.
 
 ## Forms and Zod
 
+- All data-entry forms must use React Hook Form and Zod through `zodResolver`, including login,
+  registration, profile, customer/service sheets, and invoice creation. Do not hand-roll form state.
 - Define one Zod form schema per use case.
 - Infer form types from the schema.
 - Use `zodResolver` with React Hook Form.
@@ -275,6 +277,10 @@ Use Testing Library queries that reflect accessible names. Test behavior rather 
 implementation details.
 
 ## Avoid
+
+For the frontend-first track, follow [Pages](../PAGES.md) and the
+[workflow](../FRONTEND-WORKFLOW.md). Mocking is allowed at the HTTP boundary in explicit mock mode;
+the prohibition below concerns fixtures inside production routes, not isolated development mocks.
 
 - hardcoded `http://localhost` API calls;
 - duplicate `getUser` implementations;

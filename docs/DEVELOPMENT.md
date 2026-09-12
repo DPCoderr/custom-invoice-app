@@ -2,6 +2,10 @@
 
 ## Principles
 
+The current frontend-first track is defined in [Pages](PAGES.md) and the
+[frontend workflow](FRONTEND-WORKFLOW.md). Its standalone mock command is a planned foundation
+deliverable, not available yet. Use the existing Aspire instructions for current runtime work.
+
 - Work from one ticket in [TASKS.md](TASKS.md).
 - Prefer a complete, small vertical slice over a wide partial refactor.
 - Keep current behavior and target behavior clearly separated.

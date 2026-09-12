@@ -5,6 +5,13 @@
 This document separates the repository's current implementation from the intended learning MVP.
 Anything labelled **target** still requires one or more tickets from [TASKS.md](TASKS.md).
 
+The [frontend-first release](PAGES.md) extends the original learning MVP with customer management
+and service editing/archiving. Its mock targets and delivery boundary are defined in the
+[frontend workflow](FRONTEND-WORKFLOW.md). The backend model and flows below still describe the
+original learning MVP; customer persistence/archive behavior is future backend work. Customer
+selection copies form values into existing invoice snapshot fields, without adding customerId
+to the invoice create request. No backend functionality is completed by the documentation change.
+
 The guiding constraints are:
 
 - keep one deployable API and one browser application;

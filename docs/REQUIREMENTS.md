@@ -1,5 +1,11 @@
 # Learning MVP requirements
 
+The requirements below describe the original backend learning MVP. The approved frontend-first
+release adds customer management, service editing/archiving, and local search/filter/sort as
+specified in [Pages](PAGES.md). Its contract additions are targets for HTTP mocks and later manual
+backend work; original non-goals below do not prohibit those explicitly scoped frontend tickets.
+All other non-goals remain. Follow the [workflow](FRONTEND-WORKFLOW.md) for delivery and evidence.
+
 ## Product goal
 
 An authenticated user can maintain a small reusable service catalogue, configure seller details,
