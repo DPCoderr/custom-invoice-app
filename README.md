@@ -11,11 +11,10 @@ a time. Customer management and service editing/archiving are planned frontend e
 original MVP. A verified mock flow is not proof of working backend persistence or PDF generation.
 
 See [Page specifications](docs/PAGES.md) for all ten pages and their behavior, and
-[Frontend delivery workflow](docs/FRONTEND-WORKFLOW.md) for design approval, per-page tasks/branches,
-Sol-medium to Luna-max handoffs, React Hook Form/Zod rules, and verification requirements.
-Page work is organized into at most two concurrent chats: [stream A](docs/PAGES-A.md) and
-[stream B](docs/PAGES-B.md). Each file contains complete page briefs and a progress checklist
-so a new chat can resume work or pick the next ready page after shared prerequisites are complete.
+[Frontend delivery workflow](docs/FRONTEND-WORKFLOW.md) for direct implementation with GPT-6 Astra
+and reasoning `high`. Work one page at a time in the current chat, with a separate branch per page,
+without generated mockups or advance design approval. The central checklist preserves progress
+and verification evidence. Build the landing last using screenshots of completed app features.
 
 > [!IMPORTANT]
 > This project is an educational MVP. It is not yet suitable for real invoicing and does not

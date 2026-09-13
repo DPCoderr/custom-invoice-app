@@ -1,112 +1,68 @@
 # Frontend-first delivery workflow
 
-## Purpose and boundaries
+## Direct implementation with Astra-high
 
-Complete the agreed frontend using HTTP mocks, then let the owner implement the backend manually.
-Read [Pages](PAGES.md), [Requirements](REQUIREMENTS.md), [Frontend conventions](conventions/FRONTEND.md),
-and the active [ticket](TASKS.md). No page implementation or image generation happens in the
-documentation ticket. Do not mark the original backend-dependent FE/QA tickets complete from mocks.
+Use GPT-6 Astra (`gpt-6-astra`) with reasoning `high` for frontend work. Read [Pages](PAGES.md),
+[Requirements](REQUIREMENTS.md), [Frontend conventions](conventions/FRONTEND.md), and the active
+[ticket](TASKS.md). This is the active workflow from 2026-09-13; earlier workflow tickets and
+design-generation records are historical. Updating these documents does not switch the current
+chat's configured model or stop an existing external task.
 
-## Models, tasks, branches, and approval
+- Work on one page at a time in the current chat. Do not create separate page agents, page chats,
+  parallel workstreams, or a coordinator task.
+- Implement directly from the detailed page specification. No generated mockups, advance design
+  approval, or separate visual approval gate is required before coding.
+- Establish and refine shared typography, colors, spacing, and component patterns in the actual
+  implementation, starting with login and then the protected dashboard shell. Maintain a professional
+  light theme, responsive layouts, accessible controls, and consistent shared tokens.
+- Build the necessary technical foundation first: contracts/fixtures, HTTP mocks, English resources,
+  and shared form/query/error helpers. Implement missing prerequisites as small tickets rather than
+  waiting for an obsolete design task. Keep backend changes outside this frontend-only track.
+- Use one branch per page, `frontend/<page-suffix>`, from the current integrated base. A page may
+  contain multiple reviewable tickets; keep each ticket around 500 reviewed changed lines or less.
+  Reuse existing page work safely after inspecting its branch/worktree; never reset unrelated work.
+- Implement, verify, and integrate the current page before starting the next. Check the actual
+  rendered page at mobile/tablet/desktop sizes, refine it, and show the working result to the user.
+  A user-requested redesign is a subsequent scoped change, not a mandatory pre-implementation step.
+- Keep functional requirements, English UI copy, shadcn, React Query, React Hook Form, Zod via
+  zodResolver, and the existing feature-owned code structure. Preserve historical invoice snapshots.
+- Use the [required shadcn blocks](conventions/FRONTEND.md#required-shadcn-blocks): `sidebar-01`
+  for the shared authenticated sidebar, `login-01` for login, and `signup-01` for registration.
 
-1. Finish shared technical foundation tickets first: contracts/fixtures and HTTP mocking, English
-   resources, then common query/form/state infrastructure. Split into <=500 reviewed-line tickets.
-   Obtain approval of the shared visual foundation before starting the two page streams.
-2. Use one visible Codex task per page, initially `gpt-5.6-sol` with reasoning `medium`.
-   These are user-visible page conversations, not hidden page subagents reporting only to a parent.
-   Run at most two owned page chats at once: one in [stream A](PAGES-A.md), one in [stream B](PAGES-B.md).
-   Waiting for approval or integration occupies the page's slot; never fill it with a third page chat.
-3. Each task uses its own worktree and branch `frontend/<page-suffix>` from the page inventory.
-   Start from the current integrated base. Stream A owns the public layout; B owns the protected
-   app layout. Coordinate shared files before editing; integrate shared changes one at a time.
-   Preserve user changes; do not reset branches or launch every page concurrently.
-4. Sol prepares the full page handoff below and generates mockups with the built-in image generator.
-   It has no explicit model selector: never claim a guaranteed GPT Image 2.5 model or silently use
-   a paid API/CLI fallback. Retain prompts, chosen image paths, and revision identifiers.
-5. Present mobile (390px), tablet (768px), and desktop (1440px) compositions plus each applicable
-   state. Generate separate readable variants; a tiny contact sheet alone is insufficient for review.
-6. Ask for explicit approval of the concrete page design and functional brief. Stop implementation
-   while awaiting approval; silence, old reference assets, and approval of another page do not count.
-7. After approval, change the same page task to `gpt-5.6-luna` with reasoning `max` for implementation.
-   If the requested model/settings are unavailable, report that fact before substituting anything.
-8. Luna implements only the approved page and scoped shared changes, then verifies functionality
-   and compares actual browser screenshots with approved mockups at all three viewport sizes.
-9. Keep each page on its own branch even when split into multiple small tickets. Integrate verified
-   work before starting dependent pages; record commit/branch and test evidence in the handoff.
-   Mark the stream checkbox only after integration. Then a fresh chat can pick the next ready page.
+## One queue and completion records
 
-## Shared gates and ownership ledger
+[PAGES.md](PAGES.md) is the only active queue and progress source. Preserve page IDs and use this order:
+Login -> Registration -> Dashboard/protected shell -> Business profile -> Customers -> Services ->
+Invoices -> Invoice detail -> Create invoice -> Home/landing.
 
-| Gate | Current status | Evidence required to open |
-| --- | --- | --- |
-| Technical foundation | Pending | Integrated contracts/fixtures, MSW mode, English resources, form/query/error helpers; passing foundation checks and commit recorded here |
-| Visual foundation | Pending | Explicit user approval of shared typography, colors, spacing, controls, and responsive direction; links/revision/approval recorded here |
+- Statuses: `Todo`, `Building`, `Verifying`, `Ready to integrate`, `Done`, `Blocked`.
+  Track the page branch, blocker, verification/notes, integrated commit, and exact next action.
+- Start by reading the current queue and any implementation notes. Resume unfinished work before
+  starting a new page; verify actual branch state rather than assuming a previous chat completed it.
+- A page checkbox means implementation, relevant tests, visual inspection, and integration passed.
+  Verified work remaining on its branch is `Ready to integrate`, not `Done`.
+- On interruption, record what is complete, what remains, failed/unrun checks, and the exact next step.
+  A later conversation can resume these notes if needed; do not create per-page conversations.
+- The earlier A/B files are historical pointers, not active ownership ledgers or execution queues.
+  Their recorded design requests do not establish implementation progress or prove tasks stopped.
+- Initial technical foundation status: pending verification/remaining foundation tickets. Record
+  evidence in TASKS.md when implemented; do not claim the original backend FE/QA tickets pass from mocks.
 
-Initial state: no page is claimed and neither stream is ready to start. Update the gates and affected
-page blockers from actual evidence, not merely because this workflow exists. Once open, use these orders:
+## Implementation notes and landing assets
 
-- A: Home -> Login -> Registration -> Business profile -> Services.
-- B: Dashboard -> Customers -> Invoices -> Invoice detail -> Create invoice.
-- Business profile also waits for B's integrated Dashboard/protected shell. Create invoice also
-  waits for integrated Business profile, Customers, Services, and Invoice detail.
-- A single coordinator serializes claims, shared infrastructure changes, and integration. Stream
-  chats send progress updates for that coordinator to record in the current integrated checkout's
-  stream files; those records are authoritative, not stale copies in page worktrees.
-- Only the coordinator updates the gate/ownership ledger. Do not overwrite newer progress when
-  integrating an older branch. Page chats own their code, designs, and page HANDOFF.md.
-- Record current integrated base branch/commit when opening the gates. New worktrees use that
-  latest base; running pages incorporate required shared changes before final verification.
-- Claims require recording the owner chat ID, page branch/worktree, status, and next action before
-  page work starts. Do not derive ownership from a checkbox alone or claim a second page in a lane.
+Maintain concise notes at `docs/design/<page-suffix>/NOTES.md` during implementation. Record relevant
+layout/component decisions, any clarified behavior, screenshots of the built page, verification
+commands/results, branch/integrated commit, and remaining work. Link the actual notes from the queue
+once created. Existing HANDOFF.md files, if any, remain optional historical input; completing a
+design handoff template is not a prerequisite. The detailed page specification still defines fields,
+validation, interactions, contracts, responsive behavior, required states, and acceptance scenarios.
 
-## How a new page chat picks up work
-
-1. Read this workflow, shared PAGES.md, the assigned stream file, and the active ticket from the
-   current integrated checkout. Confirm that both shared gates are open.
-2. Check the recorded owner's actual chat state. A waiting/blocked owner retains its page; elapsed
-   time does not release it. If activity cannot be determined, report the uncertainty without claiming.
-3. Resume previously started work with no active owner after the coordinator records the transfer;
-   otherwise take the first unchecked page with all dependencies integrated. Reuse its branch and
-   handoff when resuming; do not create a duplicate implementation. Leave blocked work visible.
-4. Have the coordinator record the claim before designing/building. Read existing approval and
-   handoff evidence; preserve valid approvals and resume the appropriate Sol/Luna phase.
-5. Report status at each phase transition. On interruption, save completed/remaining work, pending
-   checks, blockers, and the exact next-chat instruction in HANDOFF.md; link it from the stream record.
-6. Use `Ready to integrate` after page checks pass on its branch. After serialized integration and
-   relevant integration checks, record evidence/commit, set `Done`, tick the checkbox, and release
-   the slot. A checked page must always have approval, test, visual-review, and integration evidence.
-
-Recheck the complete flow after both streams finish. Links to planned pages remain recorded as
-pending until integration. These queue rules do not authorize page work during documentation tickets.
-
-## Required Sol-to-Luna handoff
-
-Store one brief at `docs/design/<page-suffix>/HANDOFF.md`, alongside references and approval notes.
-Fill every field with concrete information; write `Not applicable` with a reason where appropriate.
-Luna must not start with only a screenshot or a link to this checklist.
-
-| Section | Required information |
-| --- | --- |
-| Identity | Page ID, ticket IDs, branch/base commit, route/search params, access rules, dependencies, implementation status |
-| User outcome | Audience, entry paths, primary task, success destination, explicit non-goals |
-| Layout and content | Ordered sections, exact English copy/resource keys, primary/secondary actions, data labels, icon meanings |
-| Design references | Approved image per viewport/state, filenames/revisions, prompts, shared tokens, approval message/date and exact scope |
-| Component mapping | Existing shadcn/form/layout primitives, feature components, missing primitives to add, shared component ownership |
-| Forms | Every field's name/type/label/default, required/optional rules, Zod constraints/cross-field rules, RHF ownership, field-array behavior |
-| Interactions | Click/submit/keyboard behavior for each action, pending/disabled conditions, focus changes, confirmations, dirty-data handling |
-| Data flow | Request/response examples, HTTP method/path/status, query keys/options, mutation invalidation, form-to-request mapper |
-| States | Trigger, rendered content, available recovery/action, preserved data, and matching fixture for every applicable state |
-| Responsive behavior | Section order, table-to-row conversion, navigation, overlays, sticky behavior, wrapping, image crop/aspect ratio at each viewport |
-| Assets | Final local asset paths, alt text/decorative treatment, dimensions, responsive variants; no baked-in functional text or buttons |
-| Accessibility | Labels, tab order, focus/error announcements, contrast, keyboard interactions, reduced-motion handling where relevant |
-| Verification | Concrete Given/When/Then cases, contract/interaction tests, screenshots to capture, commands and expected outcomes |
-| Handoff constraints | Known backend gaps, integration dependencies, remaining unresolved decisions; zero blockers before implementation |
-
-The page brief specializes its PAGES-A.md or PAGES-B.md specification and shared PAGES.md rules.
-Do not merely duplicate those documents without details. Include filled and
-empty examples, realistic long strings, and a failure example for each mutation. Explain exactly
-what happens after success and failure, including which inputs remain. Unexpected implementation
-decisions that change scope or approved design return to the owner for clarification.
+Build the landing last, after the feature pages and their integrated mock flow are verified.
+Capture screenshots from the running app using fictitious example records; show real implemented
+features, not invented/generated app screens. Store selected captures as project assets with useful
+responsive sizes, explicit dimensions, and appropriate alt text. Reflow/crop for legibility and keep
+surrounding headings, explanations, and CTAs in HTML. Existing images remain optional references;
+they do not substitute for current app screenshots on the landing.
 
 ## Mock boundary and later backend connection
 
@@ -136,9 +92,9 @@ decisions that change scope or approved design return to the owner for clarifica
 - Documentation: resolve relative Markdown links, inspect diff/scope, and run `git diff --check`.
 - Frontend tickets: `npm run build`, `npm run lint`, `npx tsc --noEmit`, and relevant Vitest tests.
   Run the complete frontend tests for the final integrated workflow; explain warnings/failures.
-- Check mobile/tablet/desktop screenshots, 320px and zoom reflow, keyboard/focus, and all agreed states.
+- Check mobile/tablet/desktop screenshots, 320px and zoom reflow, keyboard/focus, and all required states.
   Test behavior rather than shadcn internals; cover schemas, request mappers, mutations, and navigation.
 - Integrated demo: register/login -> profile -> customer/service -> create -> list -> detail ->
   example PDF; also verify logout/session expiry, failures, local persistence, and reset.
 - Record `Frontend verified with mocks` separately from `Backend integration not verified`.
-  Neither passing frontend tests nor an approved mockup makes the full product production-ready.
+  Passing frontend tests alone does not make the full product production-ready.

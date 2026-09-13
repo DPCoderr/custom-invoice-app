@@ -5,7 +5,7 @@
 Work from top to bottom unless a ticket explicitly says it can run independently. Complete one
 ticket per reviewable change. A ticket is complete only when its acceptance criteria and checks
 pass; writing code is not completion by itself.
-The frontend-first stream queues below explicitly allow two page chats in parallel, one ticket per chat.
+Frontend-first work follows the single PAGES.md queue with Astra-high, one page and ticket at a time.
 
 Size estimates count human-reviewed source lines. Generated migrations, lockfiles, and generated
 TanStack route trees are excluded from the estimate but must still be inspected.
@@ -28,6 +28,8 @@ the [frontend workflow](FRONTEND-WORKFLOW.md); preserve the original backend lea
 ### DOC-FE-001 — Specify pages and design-to-implementation handoffs
 
 **Status:** Done (2026-09-12; documentation only).
+**Historical workflow:** superseded by DOC-FE-003 and DOC-FE-004. The original acceptance/evidence
+below records past documentation work and is not an active design-approval requirement.
 **Purpose:** Give Sol-medium and Luna-max a shared, detailed page contract before page work starts.
 **Expected area:** documentation and agent instructions only; target <=500 reviewed changed lines.
 **Acceptance:** all ten pages specify fields/actions/states/responsiveness/data/testing; the handoff
@@ -41,6 +43,7 @@ whitespace and normal-config Git diff checks passed. Only documentation/agent in
 ### DOC-FE-002 — Split page specifications into two resumable streams
 
 **Status:** Done (2026-09-12; documentation only).
+**Historical workflow:** superseded by DOC-FE-003 and DOC-FE-004; parallel stream ownership no longer applies.
 **Purpose:** Preserve all ten page specifications while enabling at most two owned page chats.
 **Expected area:** shared index, two stream checklists, workflow, README, and agent instructions.
 **Acceptance:** each page is fully specified exactly once; all checkboxes start unchecked; owner,
@@ -53,18 +56,53 @@ dependency order, resolve Markdown links/anchors, review workflow consistency, `
 verified; Git diff/new-file whitespace checks pass. No page chat or implementation was started.
 **Non-goals:** starting page chats, generating designs, implementing pages, or modifying backend code.
 
-### Next frontend tickets
+### DOC-FE-003 — Adopt direct sequential implementation with Astra-high
+
+**Status:** Done (2026-09-13; documentation only).
+**Purpose:** Replace model handoffs, advance mockup approval, and parallel page chats with direct
+GPT-6 Astra/high implementation in the current chat. Keep per-page branches and verification.
+**Expected area:** workflow, agent instructions, README, frontend conventions, and design guidance.
+**Acceptance:** active instructions use Astra-high and inspect the built UI; technical prerequisites
+remain actionable tickets; optional redesign follows implementation; legacy assets/history are preserved.
+**Checks:** instruction consistency, Markdown links, scope review, and `git diff --check`.
+**Evidence:** active workflow/agent instructions use Astra-high; obsolete requirements are historical;
+59 relative links/anchors and Git whitespace checks pass. No application code/model settings changed.
+**Non-goals:** changing the current model setting, stopping external tasks, images, or application code.
+
+### DOC-FE-004 — Consolidate the page queue and build the landing last
+
+**Status:** Done (2026-09-13; documentation only).
+**Purpose:** Move all ten specifications/progress records into PAGES.md and retire the A/B queues.
+**Expected area:** central pages document, historical A/B pointers, and backlog.
+**Acceptance:** preserve fields/contracts/validation/acceptance criteria; one ordered checklist,
+branch/blocker/evidence/commit/next-step records; landing last with screenshots of actual features.
+**Checks:** compare moved specifications/contracts, validate order and links, `git diff --check`.
+**Evidence:** ten specifications in the requested order; nine descriptions moved unchanged, with only
+landing screenshot requirements updated; contracts/mock boundary unchanged; ten unchecked progress
+records, historical pointers, relative links/anchors, and Git whitespace checks pass.
+**Non-goals:** page implementation, runtime verification, or claims that old page tasks have stopped.
+
+### DOC-FE-005 — Require the selected shadcn blocks
+
+**Status:** Done (2026-09-13; documentation only).
+**Purpose:** Require shadcn components, `sidebar-01` for the shared authenticated sidebar,
+`login-01` for login, and `signup-01` for registration, with the exact `npx shadcn@latest add` commands.
+**Acceptance:** conventions, page specifications, workflow, and frontend agent instructions agree;
+block forms retain React Hook Form/Zod and page behavior; existing custom components are preserved.
+**Checks:** command/mapping review, relative links/anchors, and `git diff --check`.
+**Evidence:** all three exact commands and mappings verified; links/anchors and Git whitespace checks pass.
+**Non-goals:** installing blocks or dependencies, modifying application code, or running the app.
+
+### Next frontend implementation tickets
 
 Before execution, expand only the next item into acceptance criteria and <=500-line tickets:
 contract types/JSON fixtures -> MSW mock startup/persistence/scenarios -> English resources
-(reuse I18N-001) -> shared query/form/error infrastructure and approved visual foundation ->
-[stream A](PAGES-A.md) and [stream B](PAGES-B.md) in parallel -> integrated frontend acceptance.
-Respect the dependency/ownership gates in the workflow; at most one page chat per stream.
-Each page uses one visible task and one branch, with
-Sol-medium design/brief preparation and Luna-max implementation after explicit design approval.
-Stream A owns the public layout; B owns the protected layout; shared edits integrate serially.
-Each ticket records
-`Frontend verified with mocks` independently from backend integration status.
+(reuse I18N-001) -> shared query/form/error infrastructure -> the single [page queue](PAGES.md):
+Login, Registration, Dashboard/protected shell, Business profile, Customers, Services, Invoices,
+Invoice detail, Create invoice -> integrated feature-flow checks -> Home/landing -> final frontend
+acceptance. Use Astra-high in the current chat, one page branch at a time. Design/refine the actual
+implementation and verify before integration; a requested redesign is a subsequent scoped change.
+Each ticket records `Frontend verified with mocks` independently from backend integration status.
 
 ## Current findings
 

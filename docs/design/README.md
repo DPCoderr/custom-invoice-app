@@ -1,45 +1,46 @@
 # Invoice Generator UI direction
 
-These mockups are implementation references for the learning MVP. They illustrate hierarchy,
-responsive behavior, and component composition; the contracts in `docs/REQUIREMENTS.md` remain
-the source of truth.
+Build directly from [Pages](../PAGES.md) using the [Astra-high workflow](../FRONTEND-WORKFLOW.md).
+Refine the actual interface during implementation and inspect the rendered result on mobile,
+tablet, and desktop. No generated mockup or advance design approval is required.
 
-These existing assets retain their prior design history; they are not a complete approval of the
-expanded frontend-first release. [Pages](../PAGES.md) now adds dashboard, customers, and service
-editing/archiving. Where the original scope below differs, follow that page specification and
-the [handoff/approval workflow](../FRONTEND-WORKFLOW.md). Complete missing viewport/state designs
-and obtain page-specific approval before implementation; keep these original assets intact.
+The existing mockups and generation record are optional historical reference material, not
+required deliverables or fixed pixel specifications. Preserve these assets. The current page
+specifications and contracts govern behavior. Build the landing last using screenshots of the
+implemented app with fictitious records; keep explanatory copy and CTAs as responsive HTML.
 
 ## Product direction
 
 - Keep the interface quiet, practical, and document-focused. Use the existing Inter variable font,
   shadcn `base-vega` styling, neutral light-theme tokens, thin borders, and restrained shadows.
-- Use a persistent desktop sidebar for `Invoices`, `Create invoice`, `Business profile`, and
-  `Services`. On mobile, replace it with the existing off-canvas sheet triggered from the top bar.
-- Treat invoice creation as the primary journey. Profile and services are prerequisites, not
-  separate administration products.
+- Use a persistent desktop sidebar for `Dashboard`, `Invoices`, `Customers`, `Services`, and
+  `Business profile`, with a prominent `Create invoice` action. On mobile, use the off-canvas sheet.
+- Treat invoice creation as the primary journey. A profile is required; customers and services
+  are reusable helpers, with manual invoice entry available when their lists are empty.
 - Use a centered content column with page title, one-line description, and a clear primary action.
   Prefer cards only where they group a meaningful form section or read-only snapshot.
-- Give the public landing page one focused promise, direct account/login actions, and a readable
-  product preview. On mobile, recompose it as one column with full-width actions instead of scaling
-  down the desktop hero.
-- Use English only. Do not introduce tax, VAT, discounts, a customer module, invoice statuses,
+- Give the public landing page one focused promise, direct account/login actions, and readable
+  screenshots of implemented features. On mobile, recompose it as one column with full-width
+  actions and appropriately cropped/resized screenshots instead of shrinking the desktop hero.
+- Use English only. Do not introduce tax, VAT, discounts, invoice statuses,
   payment workflows, or storage details.
 
 ## Information architecture
 
 ```text
 Authenticated shell
+|-- Dashboard
 |-- Invoices
 |   |-- Empty or populated list
 |   `-- Invoice detail -> authorized PDF download
 |-- Create invoice
+|-- Customers
 |-- Business profile
 `-- Services
 ```
 
-The desktop references show profile and services together to explain the prerequisite relationship.
-The implementation may keep them as separate routes while reusing the same completion callout.
+Historical desktop references combine profile and services; the implementation uses their separate
+specified routes and can reuse the profile completion callout.
 
 ## Component mapping
 
@@ -50,7 +51,7 @@ The implementation may keep them as separate routes while reusing the same compl
 | Form sections | Existing `Card`, `Field`, `Label`, `Input`, and `Select`; add a shadcn `Textarea` during the relevant frontend ticket | Labels remain visible; optional fields are marked in the label. `Textarea` is not currently present in the repository. |
 | Dates | Existing form date picker and `Popover`/`Calendar` | Display localized dates; requests still map to local `yyyy-MM-dd`. |
 | Invoice lines | `Card`, `Select`, `Input`, `Button`, `Separator` | Desktop uses a compact row; mobile turns every line into a vertical card. |
-| Invoice list | `Table`, `Button` or semantic link | Whole-row detail navigation must not hide the separately named PDF action. |
+| Invoice list | `Table`, `Button` or semantic link | Provide clear detail navigation; the PDF download action lives on detail. |
 | Empty state | `Card`, Lucide file icon, `Button` | State explains what is missing and offers one direct action. |
 | Invoice detail | `Breadcrumb`, `Card`, `Table`, `Separator`, `Button` | Snapshot fields are read-only; download points to the owned API endpoint. |
 | Feedback | `Skeleton`, inline error region, `Sonner` | Provide loading, error, empty, and success states; a toast is never the only error detail. |
@@ -66,7 +67,7 @@ The implementation may keep them as separate routes while reusing the same compl
   shrink a full desktop-length form into one screen: earlier sections scroll out of view while the
   active section receives normal viewport space.
 - Tables may become stacked summary rows on small screens. Preserve invoice number, customer,
-  dates, total, detail navigation, and an explicitly named PDF action.
+  dates, total, and detail navigation; keep the detail page's PDF action explicitly named.
 - Never shrink desktop controls until labels or values become unreadable; reflow before reducing
   type size.
 
@@ -83,7 +84,7 @@ The implementation may keep them as separate routes while reusing the same compl
   readiness.
 - Use table semantics on desktop and retain equivalent label/value relationships in mobile rows.
 
-## Reference assets
+## Historical reference assets (optional)
 
 | Asset | Intent | Visual QA |
 | --- | --- | --- |

@@ -1,5 +1,8 @@
 # ImageGen prompts
 
+Historical generation record for the existing optional reference assets. These prompts are not
+an active task or a prerequisite for implementation; follow the [Astra-high workflow](../FRONTEND-WORKFLOW.md).
+
 ## Execution
 
 - Mode: built-in ImageGen tool (default skill path)

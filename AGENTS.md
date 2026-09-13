@@ -5,9 +5,8 @@
 - Read `README.md`, `docs/ARCHITECTURE.md`, and the relevant ticket in `docs/TASKS.md`.
 - For backend work, also read `docs/conventions/BACKEND.md`.
 - For frontend work, also read `docs/conventions/FRONTEND.md`.
-- For frontend-first pages, also read `docs/PAGES.md`, `docs/FRONTEND-WORKFLOW.md`, and the
-  assigned `docs/PAGES-A.md` or `docs/PAGES-B.md` checklist and page handoff. Do not implement
-  a page before its explicit design approval.
+- For frontend-first pages, read the central `docs/PAGES.md` checklist, `docs/FRONTEND-WORKFLOW.md`,
+  and any existing page implementation notes. Implement directly; no advance mockup approval is required.
 - More specific `AGENTS.md` files override these instructions within their directory.
 
 ## Working agreements
@@ -23,9 +22,10 @@
   or deployment work to an MVP ticket unless the ticket explicitly requires it.
 - The frontend-first track explicitly includes customers and service editing/archiving through
   mocked contracts. It does not authorize backend implementation or completion claims from mocks.
-- Frontend-first work allows at most two owned page chats, one per stream, after shared gates open.
-  Follow the workflow's claim/resume protocol; waiting chats retain ownership. Record handoff and
-  verification evidence, and tick a page only after integration. Work one ticket at a time per chat.
+- Use GPT-6 Astra (`gpt-6-astra`) with reasoning `high` for frontend work, one page at a time in
+  the current chat. Do not create page agents or parallel page chats. Keep one branch per page.
+- Follow the central queue; build the landing last using screenshots of implemented app features.
+  Record notes and verification, and tick a page only after tests, visual review, and integration.
 
 ## Aspire workflow
 

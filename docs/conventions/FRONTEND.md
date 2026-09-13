@@ -12,6 +12,10 @@ form -> Zod schema -> request mapper -> mutation -> query invalidation
 Use TanStack Query for server state, TanStack Router for URL and route lifecycle, React Hook Form
 for form state, Zod for client validation, and shadcn/ui primitives for presentation.
 
+Follow the [Astra-high workflow](../FRONTEND-WORKFLOW.md): implement one page at a time from the
+central [page checklist](../PAGES.md), inspect the built UI, and refine it without an advance mockup
+approval phase. Keep one branch per page and build the landing last from actual feature screenshots.
+
 ## Feature structure
 
 Use feature-owned files rather than a global collection of unrelated API helpers:
@@ -234,7 +238,8 @@ authority. Frontend totals are previews only.
 
 ## UI components and accessibility
 
-- Prefer existing shadcn/ui primitives before adding a new component library.
+- Use shadcn/ui components for application controls and the required blocks below as the layout
+  starting points. Reuse existing primitives and form adapters instead of duplicating them.
 - Keep domain behavior out of `components/ui`.
 - Associate every label with a control.
 - Use semantic links for navigation and buttons for actions.
@@ -245,6 +250,24 @@ authority. Frontend totals are previews only.
 
 Generated shadcn files may trigger broad lint rules. Fix accessibility at the usage site first; edit
 the primitive only when the primitive itself is wrong and the ticket includes that scope.
+
+### Required shadcn blocks
+
+Run the matching command from `src/frontend` during the relevant implementation ticket:
+
+| Area | Required block | Command |
+| --- | --- | --- |
+| Shared sidebar on every authenticated page | `sidebar-01` | `npx shadcn@latest add sidebar-01` |
+| Login page | `login-01` | `npx shadcn@latest add login-01` |
+| Signup page | `signup-01` | `npx shadcn@latest add signup-01` |
+
+Adapt these blocks to the page specification, light theme, English resources, and responsive
+behavior. Connect forms to React Hook Form, Zod via zodResolver, and the existing auth mutations.
+Replace sample navigation/content with actual app behavior; omit block extras outside the page
+scope, such as unconfigured social login or placeholder legal/password-reset links.
+Install the sidebar once in the shared authenticated layout, not separately on every page.
+Inspect generated changes and reconcile existing components without blindly overwriting custom work.
+These are implementation instructions; documenting the commands does not mean blocks are installed.
 
 ## Localization
 
